@@ -1,0 +1,12 @@
+.post-content-body {
+	text-align: center;
+}
+
+	.article-content {
+		text-align: justify;
+	}
+
+	.post-entry-sidebar {
+		height: 200vh;
+		overflow: hidden scroll;
+	}

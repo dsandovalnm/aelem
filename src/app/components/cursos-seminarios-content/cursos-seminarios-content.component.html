@@ -1,0 +1,104 @@
+<section [class]="'section-'+sectionName">
+	<div [class]="'box-'+sectionName">
+		<h4 class="title text-center py-4">Nuestros {{ sectionName }} </h4>
+		<div class="container">
+			<!-- Versión Escritorio -->
+			<div class="no-mobile-flex content-box">
+				<div *ngFor="let curso_seminario of content" [class]="sectionName+'-box col-sm-3'" data-bs-toggle="modal" [attr.data-bs-target]="'#'+sectionName+'Modal_'+curso_seminario.codigo">
+						<img [src]="'assets/img/'+sectionName+'/'+curso_seminario.imagen_curso_seminario" [alt]="curso_seminario.nombre_curso_seminario">
+						<p class="title text-center"> {{ curso_seminario.nombre_curso_seminario }} </p>
+						<div class="text-box">
+							<small class=""> {{ curso_seminario.descripcion_curso_seminario }} </small>
+							<small class="title ">Disertante: {{ curso_seminario.titulo_profesional }} {{ curso_seminario.nombre_profesional }} {{ curso_seminario.apellido_profesional }} </small>
+						</div>
+				</div>
+							
+				<div *ngFor="let curso_seminario of content" class="modal fade cur-sem-modal" [id]="sectionName+'Modal_'+curso_seminario.codigo" tabindex="-1" role="dialog" [attr.aria-labelledby]="sectionName+'ModalCenterTitle'" aria-hidden="true">
+						<div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+							<div class="modal-content">
+								<button type="button" class="btn close" data-bs-dismiss="modal" aria-label="Close">
+										<i class="fas fa-times fa-lg"></i>
+								</button>
+								<div class="modal-header background-overlay-light" style="background-image:url(assets/img/{{sectionName}}/{{curso_seminario.imagen_curso_seminario}});background-position:center;background-size:cover;">
+										<h5 class="modal-title text-center white-text" [id]="sectionName+'ModalLongTitle'"> {{ curso_seminario.nombre_curso_seminario }} </h5>
+								</div>
+								<div class="modal-body">
+										<div class="detail-boxes">
+											<div class="diagonal-box">
+												<img class="modal-icon" src="assets/img/cursos/icons/clases-icon.png" alt="modal icon"/>
+												<div class="detail-box">
+														<h6 class="title">Clases</h6>
+														<small> {{ curso_seminario.clases }} clases </small>
+												</div>
+											</div>
+											<div class="diagonal-box">
+												<img class="modal-icon" src="assets/img/cursos/icons/avance-icon.png" alt="modal icon"/>
+												<div class="detail-box">
+														<h6 class="title">Avance</h6>
+														<small>Podrás ver tu registro</small>
+												</div>
+											</div>
+											<div class="diagonal-box">
+												<img class="modal-icon" src="assets/img/cursos/icons/disertante-icon.png" alt="modal icon"/>
+												<div class="detail-box">
+														<h6 class="title">Disertante</h6>
+														<small> {{ curso_seminario.titulo_profesional }} {{ curso_seminario.nombre_profesional }} {{ curso_seminario.apellido_profesional }} </small>
+												</div>
+											</div>
+										</div>
+										<div class="description-box">
+											<p> {{ curso_seminario.descripcion_curso_seminario }} </p>
+										</div>
+								</div>
+							</div>
+						</div>
+				</div>
+			</div>
+
+			<!-- Versión Móvil -->
+			<div class="mobile content-box">
+				<div *ngFor="let curso_seminario of content" class="modal fade cur-sem-modal" [id]="sectionName+'MobileModal_'+curso_seminario.codigo" tabindex="-1" role="dialog" [attr.aria-labelledby]="sectionName+'ModalCenterTitle'" aria-hidden="true">
+					<div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+							<div class="modal-content">
+								<img class="background-img" src="assets/img/icons/fondo_azul.png" alt="background_blue">
+								<button type="button" class="btn close" data-bs-dismiss="modal" aria-label="Close">
+									<i class="fas fa-times fa-lg"></i>
+								</button>
+								<div class="modal-header background-overlay-light" style="background-image:url(assets/img/{{sectionName}}/{{curso_seminario.imagen_curso_seminario}});background-position:center;background-size:cover;">
+									<h5 class="modal-title text-center white-text" [id]="sectionName+'ModalLongTitle'"> {{ curso_seminario.nombre_curso_seminario }} </h5>
+								</div>
+								<div class="modal-body">
+									<div class="detail-boxes">
+										<div class="diagonal-box">
+											<img class="modal-icon" src="assets/img/icons/clases-icon.png" alt="modal icon"/>
+											<div class="detail-box">
+													<h6 class="title">Clases</h6>
+													<small> {{ curso_seminario.clases }} clases </small>
+											</div>
+										</div>
+										<div class="diagonal-box">
+											<img class="modal-icon" src="assets/img/icons/avance-icon.png" alt="modal icon"/>
+											<div class="detail-box">
+													<h6 class="title">Avance</h6>
+													<small>Podrás ver tu registro</small>
+											</div>
+										</div>
+										<div class="diagonal-box">
+											<img class="modal-icon" src="assets/img/icons/disertante-icon.png" alt="modal icon"/>
+											<div class="detail-box">
+													<h6 class="title">Disertante</h6>
+													<small> {{ curso_seminario.titulo_profesional }} {{ curso_seminario.nombre_profesional }} {{ curso_seminario.apellido_profesional }} </small>
+											</div>
+										</div>
+									</div>
+									<div class="description-box">
+											<p> {{ curso_seminario.descripcion_curso_seminario }} </p>
+									</div>
+								</div>
+							</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

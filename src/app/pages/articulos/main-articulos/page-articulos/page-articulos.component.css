@@ -1,0 +1,27 @@
+
+.articles-list {
+	display: flex;
+	gap: 1rem;
+	flex-wrap: wrap;
+}
+	.articles-list .article {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		align-items: center;
+		flex: calc(33.3% - 1rem);
+	}
+
+.article-info {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	justify-content: space-between;
+}
+
+.article-titulo {
+	padding: 0!important;
+	margin: 20px 0!important;
+	line-height: 0.8;
+}
+

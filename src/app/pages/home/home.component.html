@@ -1,0 +1,196 @@
+<app-navbar></app-navbar>
+
+<section class="banner-publi">
+	<swiper	class="swiper"
+				[autoplay]="{delay: 3000}"
+				[speed]="1000"
+				[loop]="true"
+				[allowTouchMove]="false"
+				[slidesPerView]="1"
+				[effect]="'fade'">
+					
+					<ng-template *ngFor="let image of bannerImgs" swiperSlide>
+						<a [routerLink]="['/cursos']">
+							<img [src]="'assets/img/home/'+image.src" alt="Banner Aelem">
+						</a>
+					</ng-template>
+					
+	</swiper>
+</section>
+
+<section class="section-header text-center">
+	<div class="header-boxes">
+		<div class="header-box first">
+			<a [routerLink]="['/articulos', articles[1].codigo]">
+				<img [src]="'assets/img/articles/'+articles[1].imagen_articulo" alt="Imagen Articulo">
+			</a>
+			<div class="header-box-text">
+				<a [routerLink]="['/articulos', articles[1].codigo]">
+					<p class="title"><strong> {{ articles[1].titulo_articulo }} </strong></p>
+					<small class="no-mobile"> {{ articles[1].articulo_descripcion }} </small>
+				</a>
+			</div>
+		</div>
+		<div class="header-box second">
+			<a [routerLink]="['/articulos', articles[2].codigo]">
+				<img [src]="'assets/img/articles/'+articles[2].imagen_articulo" alt="Imagen Articulo">
+			</a>
+			<div class="header-box-text">
+				<a [routerLink]="['/articulos', articles[2].codigo]">
+					<p class="title"><strong> {{ articles[2].titulo_articulo }} </strong></p>
+					<small class="no-mobile"> {{ articles[2].articulo_descripcion }} </small>
+				</a>
+			</div>
+		</div>
+		<div class="header-box third">
+			<a [routerLink]="['/articulos', articles[0].codigo]">
+				<img [src]="'assets/img/articles/'+articles[0].imagen_articulo" alt="Imagen Articulo">
+			</a>
+			<div class="header-box-text">
+				<a [routerLink]="['/articulos', articles[0].codigo]">
+					<p class="title"><strong> {{ articles[0].titulo_articulo }} </strong></p>
+					<small class="no-mobile"> {{ articles[0].articulo_descripcion }} </small>
+				</a>
+			</div>
+		</div>
+		<div class="header-box fourth">
+			<div class="info-text">
+				<h6 class="texto-imagen">Recibí tu ayuda por whatsapp</h6>
+				<a href="#" class="btn btn-info btn-sm">Haz click aquí</a>
+			</div>
+			<a href="#">
+				<img src="assets/img/home/whatsapp_pub.jpg" alt="Campaña Whatsapp">
+			</a>
+		</div>
+		<div class="header-box fifth">
+			<div class="info-text">
+				<h6 class="texto-imagen">Recibí tu ayuda por whatsapp</h6>
+				<a href="https://instagram.com/dr.palermo/" target="_blank" class="btn btn-info btn-sm">Haz click aquí</a>
+			</div>
+			<a href="https://instagram.com/dr.palermo/" target="_blank">
+				<img src="assets/img/home/instagram_pub.jpg" alt="Campaña Whatsapp">
+			</a>
+		</div>
+	</div>
+</section>
+
+<section class="section-extra-publi">
+	<div class="publi text-center">
+		<a href="https://bit.ly/3q0nsAn" target="_blank" style="width:100%;height:100%;"></a>
+	</div>
+</section>
+
+<section class="section-bitacora">
+	<div class="content">
+		<div class="videos">
+				<h6 class="title">Bitácora del día</h6>
+				<div class="black-divider"></div>
+				<div id="bitacora-slider" class="bitacora-slider owl-carousel">
+					<swiper	[slidesPerView]="3"
+								[preventClicks]="true">
+
+								<ng-template *ngFor="let video of videosPandemia" swiperSlide>
+									<div class="video">
+										<iframe [src]="video.src" height="490" width="280" allowfullscreen frameborder="0"></iframe>
+										<div class="title-content">
+											<p class="title"> {{ video.titulo }} </p>
+										</div>
+										<div class="description-content">
+											<p class="description"> {{ video.descripcion }} </p>
+										</div>
+									</div>
+								</ng-template>
+					</swiper>
+				</div>
+		</div>
+		<div class="public">
+				<div class="box_1 background-overlay-light">
+					<div class="text-content">
+						<h5 class="title">Descarga nuestra revista mensual</h5>
+						<hr>
+						<a [routerLink]="['/descargas']" class="btn btn-primary">Descargar</a>
+					</div>
+				</div>
+				<div class="box_2 background-overlay-light">
+					<div class="text-content">
+						<h6 class="title">suscribite a nuestro canal de youtube</h6>
+						<a class="btn btn-danger" href="https://www.youtube.com/channel/UCX5TrEIpjdFkasIDYot6AKQ" target="_blank">
+								<span class="title">Click Aquí</span>
+						</a>
+					</div>
+				</div>
+		</div>
+	</div>
+</section>
+
+<section class="section-charlas">
+	<div class="content">
+		<div class="last-charlas-abiertas col-12 col-sm-9">
+				<h6 class="title">Charlas Abiertas</h6>
+				<div class="black-divider"></div>
+
+				<swiper	class="swiper last-charlas-abiertas-slider"
+							[slidesPerView]="2"
+							[spaceBetween]="10">
+					<ng-template *ngFor="let charla of charlasAbiertas" swiperSlide>
+						<div class="last-charla">
+							<a [href]="charla.video" target="_blank">
+								<img [src]="'assets/img/home/charlas_abiertas/' + charla.imagen" [alt]="charla.titulo" class="rounded">
+							</a>
+							<a [href]="charla.video" target="_blank">
+								<p class="title"> {{ charla.titulo }} </p>
+							</a>
+							<p> {{ charla.descripcion }} </p>
+						</div>
+					</ng-template>
+				</swiper>
+
+				<div class="other-charlas scroller col-12">
+					<div *ngFor="let charla of charlasAbiertas" class="charla col-12 col-sm-6">
+						<a [href]="charla.video" target="_blank" class="col-6">
+							<img [src]="'assets/img/home/charlas_abiertas/' + charla.imagen" [alt]="charla.titulo" class="rounded">
+						</a>
+						<div class="text-charla">
+							<a [href]="charla.video" target="_blank">
+								<p class="title" style="font-size: .8rem;"> {{ charla.titulo }} </p>
+							</a>
+							<p class="no-mobile" style="font-size:.8rem;"> {{ charla.descripcion }} </p>
+						</div>  
+					</div>
+				</div>
+		</div>
+		<div class="twitter-box scroller col-12 col-sm-3">
+				<a class="twitter-timeline" href="https://twitter.com/snpalermo?ref_src=twsrc%5Etfw">Tweets by snpalermo</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
+		</div>
+	</div>
+</section>
+
+<!-- Campaña y Contenido -->
+<section class="section-campania-tienda">
+	<div class="content">
+		<div class="campania-whatsapp">
+				<a href="#">
+					<img class="no-mobile" src="assets/img/home/publi-sebastian.jpg" alt="Biografia Sebastian Imagen">
+					<img class="mobile" src="assets/img/home/publi-sebastian-mb.jpg" alt="Biografia Sebastian Imagen">
+				</a>
+		</div>
+		<div class="tienda-online">
+				<a href="/descargas_online">
+					<img class="no-mobile" src="assets/img/home/publi-descargas.jpg" alt="Descargas Imagen">
+					<img class="mobile" src="assets/img/home/publi-descargas_mb.jpg" alt="Descargas Imagen">
+				</a>
+		</div>
+		<div class="recursos-cuarentena">
+				<div class="background-overlay-light">
+					<div class="texto-imagen">
+						<h5>Recursos</h5>
+						<h5><strong>Pandemia</strong></h5>
+						<p>Ayuda Emocional</p>
+						<a href="/pandemia" class="btn btn-outline-info btn-block">Click Aquí</a>
+					</div>
+				</div>
+		</div>
+	</div>
+</section>
+
+<app-footer></app-footer>

@@ -1,0 +1,18 @@
+<div class="algo-para-leer-content">
+	<div class="card-columns">
+		<div *ngFor="let article of articulosLeer" class="card col-sm-4 col-6">
+			<a [routerLink]="['/algoparaleer/ver', article.codigo]">
+				<img class="card-img-top" [src]="'assets/img/algoparaleer/' + article.imagen" alt="Imagen Articulo">
+			</a>
+			<a [routerLink]="['/algoparaleer/ver', article.codigo]">
+				<div class="card-body">
+						<h6 class="card-title">{{ article.titulo }} </h6>
+						<p class="card-text mb-5"> {{ article.descripcion }} </p>
+						<small class="title"> {{ article.autor }} - {{ article.anio }} </small>
+						<br>
+						<small class="title">{{ article.institucion }} </small>
+				</div>
+			</a>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,54 @@
+<div class="topblank"></div>
+<nav class="navbar navbar-expand-lg" [ngClass]="{'fixed' : fixed}" (window:scroll)="windowScroll($event)">
+	<div class="container-fluid container">
+		<a class="navbar-brand" href="/">
+			<img class="logo" [src]="fixed ? 'assets/img/logos/logo_texto_blanco.png' : 'assets/img/logos/logo_texto_azul.png'" alt="Logo Aelem">
+		</a>
+		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarNavDropdown">
+			<ul class="navbar-nav">
+				<li class="nav-item">
+					<a class="nav-link active" aria-current="page" [routerLink]="['/']">Home</a>
+				</li>
+				<li class="nav-item dropdown">					
+					<span class="badge badge-pill bg-danger">3</span>
+					<a class="nav-link dropdown-toggle" href="#" id="nuevosSeminariosLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+						Nuevos Seminarios
+					</a>
+					<ul class="dropdown-menu" [ngClass]="{'fixed' : fixed}" aria-labelledby="nuevosSeminariosLink">
+						<li><a class="dropdown-item" href="#">Seminario 1</a></li>
+						<li><a class="dropdown-item" href="#">Seminario 2</a></li>
+						<li><a class="dropdown-item" href="#">Seminario 3</a></li>
+					</ul>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" [routerLink]="['/pandemia']">Pandemia</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" [routerLink]="['/cursos']">Cursos</a>
+				</li>
+				<li class="nav-item dropdown">
+					<span class="badge badge-pill bg-danger">1</span>
+					<a class="nav-link dropdown-toggle" href="#" id="contenidoLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+						Contenido
+					</a>
+					<ul class="dropdown-menu" [ngClass]="{'fixed' : fixed}" aria-labelledby="contenidoLink">
+						<li><a class="dropdown-item" [routerLink]="['/articulos']">Articulos</a></li>
+						<li><a class="dropdown-item" [routerLink]="['/algoparaleer']">Algo para leer</a></li>
+					</ul>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" [routerLink]="['descargas']">Descargas</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" [routerLink]="['/cursos']">Inscribirme</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" [routerLink]="['plataforma']">Plataforma</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+</nav>

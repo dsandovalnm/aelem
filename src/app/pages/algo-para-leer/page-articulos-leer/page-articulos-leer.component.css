@@ -1,0 +1,9 @@
+.card-columns {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 1rem;
+}
+	.card {
+		height: fit-content;
+		flex: 1 calc(33.3% - 1rem);
+	}

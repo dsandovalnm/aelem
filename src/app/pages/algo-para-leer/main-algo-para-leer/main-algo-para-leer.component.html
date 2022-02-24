@@ -1,0 +1,27 @@
+<app-header	[style]="'background-image: url(assets/img/algoparaleer/header.jpg);background-position: bottom;background-attachment:fixed;background-size: cover;height:50vh;'"
+				[mainTitle]="'Algo Para Leer'"
+				[description]="'Nueva Sección - Blog - Recomendaciones'">
+</app-header>
+
+<section class="section-algo-para-leer">
+	<div class="search-box container my-4">
+		<form id="request-form" class="request-form">
+			<div class="input-group">
+				<input type="hidden" id="data-tb" name="data-tb" value="articulos">
+				<input id="search-argument" name="search-argument" type="text" class="form-control" autocomplete="off" placeholder="Qué quiere buscar?">
+				<button type="submit" id="search-art-btn" class="fas fa-search search-icon"></button>
+			</div>
+		</form>
+	</div>
+
+	<app-spinner *ngIf="articulosLeer.length <= 0; else showArticles"></app-spinner>
+
+	<ng-template #showArticles>
+		<app-page-articulos-leer [articulosLeer]="articlesFiltered"></app-page-articulos-leer>
+		<app-pagination	(pageNumber)="filterArticulosLeer($event)"
+								[results]="results"
+								[data]="articulosLeer"
+								[pageName]="'algoparaleer'"></app-pagination>
+	</ng-template>
+</section>
+

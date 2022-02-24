@@ -1,0 +1,31 @@
+
+.section-algo-para-leer {
+	background-color: #768FA5;
+	text-align: center;
+}
+	.card-columns {
+		display: flex;
+		flex-wrap: wrap;
+	}
+
+.search-box .input-group {
+	border-radius:7px;
+	border:1px solid #f1f1f1;
+	padding: 0 10px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+}
+	.search-box .input-group input {
+		margin: 0 10px;
+		border: none;
+		border-bottom: 1px solid #f1f1f1;
+	}
+	.search-box .input-group .search-icon {
+		cursor:pointer;
+		margin:15px!important;
+		font-size:25px;
+		border: none;
+		background: none;
+	}

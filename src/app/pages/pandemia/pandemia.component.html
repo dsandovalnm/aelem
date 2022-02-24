@@ -1,0 +1,87 @@
+<app-navbar></app-navbar>
+<app-header	[style]="'background-image: url(assets/img/pandemia/header.jpg); background-size:cover; background-position: top center; background-attachment: fixed; height:70vh;'"
+				[mainTitle]="'Educación Emocional'"
+				[subTitle]="'En Tiempos de Pandemia'"
+				[description]="'Les damos la bienvenida y esperamos que puedan recibir herramientas prácticas para atravesar cada adversidad que se presenta delante de ustedes. Especialmente en este tiempo donde en muchas naciones están en pandemia hemos decidido brindar todo este contenido de forma gratuita, para que sea de ayuda para el HOY y así puedan atravesar este tiempo de aislamiento de manera funcional. Esperamos sea de ayuda para sus vidas! Ayúdanos a compartir este contenido. Mis afectos para con ustedes.'"
+				[descriptionFontSize]="'1rem'">
+</app-header>
+
+<section class="contenido-audiovisual">
+	<div class="container content">
+		<div class="col-12 col-sm-5">
+			<h3 class="text-center" style="font-weight:bolder">Contenido Audiovisual</h3>
+			<p class="text-justify">Te compartimos herramientas y tips prácticos para que puedas mejorar y cuidar tu calidad de vida emocional en este tiempo de pandemia.</p>
+		</div>
+		<div class="swiper-cuarentena-videos col-12 col-sm-7">
+			<div id="videos-cuarentena" class="videos-cuarentena py-3 text-center">
+				<swiper	class="swiper videos"
+							[autoplay]="false"
+							[slidesPerView]="1"
+							[navigation]="true">
+
+							<ng-template *ngFor="let video of videosPandemia" swiperSlide>
+								<div class="item">
+									<h5 class="py-2"> {{ video.titulo }} </h5>
+									<iframe [src]="video.src" frameborder="0" allow="autoplay; fullscreen" allowfullscreen style="height:65vh;"></iframe>
+								</div>
+							</ng-template>
+				</swiper>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section class="section-articulos">
+	<div class="swiper-cuarentena-articulos">
+		<h3 class="title text-center">Escritos de Ayuda</h3>
+		<app-spinner *ngIf="articulosPandemia.length <= 0; else showArticles"></app-spinner>
+		<ng-template #showArticles>
+			<swiper	class="swiper articulos"
+					[autoplay]="false"
+					[navigation]="true"
+					[spaceBetween]="20"
+					[slidesPerView]="4">
+
+						<ng-template *ngFor="let articulo of articulosPandemia" swiperSlide>
+							<div class="art-content box d-flex flex-column justify-content-between">
+								<div class="head-articulo-content d-flex flex-column justify-content-start">
+									<a [routerLink]="['/pandemia/articulo', articulo.codigo]">
+											<img [src]="'assets/img/pandemia/articles/'+articulo.imagen_articulo" [alt]="'Imagen '+articulo.titulo_articulo" class="img-fluid rounded">
+									</a>
+									<a [routerLink]="['/pandemia/articulo', articulo.codigo]">
+											<p class="text-center text-uppercase pt-2" style="font-weight:bold;font-size:14px;">
+												{{ articulo.titulo_articulo }}
+											</p>
+											<p class="text-center pt-2" style="font-size:.7rem;">
+												{{ articulo.articulo_descripcion }}
+											</p>
+									</a>
+								</div>
+								<div class="d-flex flex-column justify-content-between align-items-center">
+									<div class="prof-info d-flex align-items-center">
+											<figure class="icon-professional"><img [src]="'assets/img/equipo/'+articulo.imagen_profesional" alt="Imagen Profesional" class="img-fluid"></figure>
+											<span class="d-inline-block">Por <a href="#"> {{ articulo.nombre }}  {{ articulo.apellido }} </a></span>
+									</div>
+									<a [routerLink]="['/pandemia/articulo']" class="btn btn-info btn-block btn-outline">Leer Más</a>
+								</div>
+							</div>
+						</ng-template>
+			</swiper>
+		</ng-template>
+	</div>
+</section>
+
+<section class="section-libro">
+	<a href="descargas">
+		<img src="assets/img/pandemia/zocalo.jpg" alt="Zocalo Descarga Libro" style="width:100%;">
+	</a>
+</section>
+
+<section class="section-botones">
+	<div class="container text-center d-flex flex-wrap justify-content-center align-items-center">
+			<a href="/cursos" class="col-xs-12 col-sm-4 btn bubble-btn btn-rounded my-2"><small>Inscribirme a los cursos</small></a>
+			<a href="/equipo" class="col-xs-12 col-sm-4 btn bubble-btn btn-rounded my-2"><small>Solicitar Ayuda Profesional</small></a>
+	</div>
+</section>
+
+<app-footer></app-footer>

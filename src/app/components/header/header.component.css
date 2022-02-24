@@ -1,0 +1,14 @@
+.text-content {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+}
+	.text-content * {
+		color: #fff;
+	}
+		.text-content .parrafo {
+			text-align: justify;
+			text-align-last: center;
+		}

@@ -1,0 +1,15 @@
+<nav aria-label="page-navigation">
+	<ul class="pagination py-4 justify-content-center">
+		<li class="page-item" [ngClass]="{'disabled': currentPage == 1}"><button class="page-link" [routerLink]="['/' + pageName + '/page', 1]" > <i class="fa-solid fa-angles-left"></i> </button></li>
+		<li class="page-item" [ngClass]="{'disabled': currentPage == 1}"><button class="page-link" [routerLink]="['/' + pageName + '/page', (currentPage-1)]" > <i class="fa-solid fa-angle-left"></i> </button></li>
+		<li class="page-item disabled" *ngIf="currentPage >= 3"><button class="page-link"> ... </button></li>
+
+		<li class="page-item" *ngIf="prevPage > 0"><button class="page-link" [routerLink]="['/' + pageName + '/page', prevPage]"> {{ prevPage }} </button></li>
+		<li class="page-item"><button class="page-link active"> {{ currentPage }} </button></li>
+		<li class="page-item" *ngIf="nextPage < pages+1"><button class="page-link" [routerLink]="['/' + pageName + '/page', nextPage]"> {{ nextPage }} </button></li>
+
+		<li class="page-item disabled" *ngIf="currentPage <= (pages-2)"><button class="page-link"> ... </button></li>
+		<li class="page-item" [ngClass]="{'disabled': currentPage == pages}"><button class="page-link" [routerLink]="['/' + pageName + '/page', (currentPage+1)]" > <i class="fa-solid fa-angle-right"></i> </button></li>
+		<li class="page-item" [ngClass]="{'disabled': currentPage == pages}"><button class="page-link" [routerLink]="['/' + pageName + '/page', pages]" > <i class="fa-solid fa-angles-right"></i> </button></li>
+	</ul>
+</nav>

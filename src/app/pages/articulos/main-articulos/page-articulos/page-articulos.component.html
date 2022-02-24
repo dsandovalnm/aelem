@@ -1,0 +1,19 @@
+
+<section class="articles-list container">
+	<div *ngFor="let article of articles; let i = index;" class="article entry2" data-aos="fade-up" data-aos-anchor-placement="top-bottom">
+		<a [routerLink]="['/articulos/ver/', article.codigo]"><img [src]="'assets/img/articles/'+article.imagen_articulo" alt="Articulo Imagen" class="img-fluid rounded"></a>
+		<div class="article-info excerpt">
+			<h4 class="article-titulo text-center text-uppercase">
+				<a class="article-link-name" [routerLink]="['/articulos/ver/', article.codigo]">
+						<strong> {{ article.titulo_articulo }} </strong>
+				</a>
+			</h4>
+			<div class="profesional-info">
+				<figure class="author-figure mb-0 mr-3 float-left"><img [src]="'assets/img/equipo/'+article.imagen_profesional" alt="Imagen Profesional" class="img-fluid"></figure>
+				<span class="d-inline-block mt-1">Por: {{ article.titulo_profesional }} {{ article.nombre }} {{ article.apellido }} </span>
+			</div>
+			<p class="py-4" style="font-size:15px;"> {{ article.articulo_descripcion }} </p>
+			<a [routerLink]="['/articulos/ver', article.codigo]" class="btn btn-info w-100">Leer Más</a>
+		</div>
+	</div>
+</section>

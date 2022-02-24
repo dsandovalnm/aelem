@@ -1,0 +1,467 @@
+.swiper {
+	width: 100%;
+	text-align: center;
+}
+
+/* Header */
+.section-header {
+	--navbarTop: calc(75px + 150px);
+	margin: 0 auto;
+	height: calc(100vh - var(--navbarTop));
+}
+
+.header-boxes {
+	display: grid;
+	height: 100%;
+	gap: .5rem;
+	grid-template-columns: 1fr 2fr 1fr;
+	grid-template-rows: repeat(2, 1fr);
+}
+	.header-box {
+		position: relative;
+		display: flex;
+		justify-content: center;
+		align-items: flex-end;
+		border-radius: 6px;
+		position: relative;
+		overflow: hidden;
+		cursor: pointer;
+		transition: all .3s ease-in-out;
+	}
+
+		.header-box img {
+			position: absolute;
+			top: 0;
+			right: 0;
+			height: 100%;
+			width: 100%;
+			object-fit: cover;
+			z-index: 0;
+			filter: brightness(0.65);
+		}
+
+		.header-box .header-box-text {
+			display: flex;
+			justify-content: flex-start;
+			align-items: center;
+			width: 100%;
+			padding: 5px 7px;
+			z-index: 1;
+		}
+		.header-box .info-text {
+			position: absolute;
+			z-index: 1;
+			top: 8%;
+			left: 8%;
+			width: 180px;
+			text-align: left;
+		}
+			.header-box .header-box-text *,
+			.header-box .info-text * {
+				text-align: justify;
+				color: #fff;
+			}
+
+			@media screen and (max-width: 768px) {
+				.header-box .info-text {
+					position: relative;
+					top: auto;
+					left: auto;
+					padding: 0 7px;
+					text-align: center;
+					text-align: center;
+				}
+			}
+				.header-box .info-text * {
+					text-transform: uppercase;
+					font-weight: bold;
+					text-align: left;
+				}
+					@media screen and (max-width: 768px) {
+						.header-box .info-text * {
+							font-size: 0.75rem;
+							text-align: center;
+						}
+					}
+
+		.header-box.first {
+			grid-column: 1 / 2;
+			grid-row: 1 / 2;
+		}
+		.header-box.second {
+			grid-column: 1 / 2;
+			grid-row: 2 / 3;
+		}
+		.header-box.third {
+			grid-column: 2 / 3;
+			grid-row: 1 / 3;
+		}
+		.header-box.fourth {
+			grid-column: 3 / 4;
+			grid-row: 1 / 2;
+		}
+		.header-box.fifth {
+			grid-column: 3 / 4;
+			grid-row: 2 / 3;
+		}
+
+
+/* Extra Publi */
+.section-extra-publi {
+	padding: 30px 50px;
+	background-image: url('../../../assets/img/home/extra-publi.jpg');
+	background-position: center;
+	background-size: contain;
+	background-repeat: no-repeat;
+	height: 26vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: flex-start;
+	position: relative;
+}
+
+
+/* Bitacora */
+.section-bitacora .content {
+	height: auto;
+	display: grid;
+	gap: 1%;
+	grid-template-columns: 74% 25%;
+	grid-template-rows: 1fr;
+	overflow: hidden;
+}
+@media screen and (max-width: 768px) {
+	.section-bitacora .content {
+		grid-template-columns: 100%;
+		grid-template-rows: 1fr 1fr;
+	}
+}
+
+	.section-bitacora .content .videos {
+		grid-column: 1 / 2;
+		grid-row: 1 / 2;
+	}
+	@media screen and (max-width: 768px) {
+		.section-bitacora .content .videos {
+			grid-column: 1 / 2;
+			grid-row: 1 / 2;
+		}
+	}
+
+	.section-bitacora .content .public {
+		grid-column: 2 / 3;
+		grid-row: 1 / 2;
+		width: 100%;
+		height: auto;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		text-align: center;
+	}
+	@media screen and (max-width: 768px) {
+		.section-bitacora .content .public {
+			grid-column: 1 / 2;
+			grid-row: 2 / 2;
+		}
+	}
+	.section-bitacora .content .public .box_1,
+	.section-bitacora .content .public .box_2 {
+		width: 100%;
+		height: 50%;
+		padding: 0 10px;
+		margin: 5px 0;
+	}
+
+	.section-bitacora .content .public .box_1 {
+		background-image: url('~/src/assets/img/home/publi-bitacora-1.jpg');
+		background-size: cover;
+		background-position: top right;
+		position: relative;
+	}
+
+	.section-bitacora .content .public .box_1 .text-content {
+		position: absolute;
+		bottom: 0;
+		top: 0;
+		left: 10px;
+		right: 20px;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: flex-start;
+	}
+		.section-bitacora .content .public .box_1 .text-content * {
+			color: #fff;
+			text-align: left;
+		}
+
+
+	.section-bitacora .content .public .box_2 {
+		text-align: center;
+		position: relative;
+		background-image: url('~/src/assets/img/home/publi-bitacora-2.jpg');
+		background-size: cover;
+		background-position: center;
+	}
+
+	.section-bitacora .content .public .box_2 .text-content {
+		position: absolute;
+		bottom: 5%;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+	}
+
+		.section-bitacora .content .public .box_2 .text-content * {
+			color: #fff;
+			text-align: center;
+		}
+
+	.section-bitacora .content .public .texto-imagen {
+		position: absolute;
+		top: 55%;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		padding: 0 20px;
+	}
+		.section-bitacora .content .public .texto-imagen * {
+			color: #fff;
+			text-align: center;
+		}
+
+	.bitacora-slider .video {
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-start;
+		align-items: center;
+		text-align: justify;
+		height: 700px;
+	}
+	@media screen and (max-width: 768px) {
+		.bitacora-slider .video {
+			height: auto;
+		}
+	}
+	.bitacora-slider .video p {
+		padding: 5px 10px;
+		font-size: 0.9rem;
+	}
+
+	.bitacora-slider .video .title-content {
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-start;
+		align-items: center;
+		height: 60px;
+	}
+	.bitacora-slider .video .title {
+		text-align: center;
+	}
+	.bitacora-slider .video .description-content {
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-end;
+		align-items: center;
+	}
+
+/* Charlas Abiertas */
+.section-charlas .content {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-items: center;
+}
+@media screen and (max-width: 768px) {
+	.section-charlas .content {
+		justify-content: center;
+	}
+}
+	.last-charlas-abiertas-slider .last-charla a img {
+		height: auto;
+	}
+	.section-charlas .content .twitter-box {
+		height: 108vh;
+		max-width: 250px!important;
+		overflow-y: hidden;
+	}
+	@media screen and (max-width: 768px) {
+		.section-charlas .content .twitter-box {
+			height: 540px;
+		}
+	}
+	.section-charlas .content .other-charlas {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: flex-start;
+		align-items: flex-start;
+		max-height: 40vh;
+		overflow-y: scroll;
+		padding: 0;
+	}
+
+	.other-charlas .charla {
+		display: flex;
+		justify-content: flex-start;
+		align-items: flex-start;
+		padding: 15px 0;
+	}
+	@media screen and (max-width: 768px) {
+		.other-charlas .charla {
+			padding: 10px 0;
+		}
+	}
+
+	.other-charlas .charla a {
+		padding: 0 10px 0 0;
+	}
+	.other-charlas .charla a img {
+		height: auto;
+	}
+
+	.other-charlas .charla .text-charla * {
+		margin: 0;
+		padding: 0;
+	}
+
+/* Campaña y Contenido */
+.section-campania-tienda .content {
+	height: auto;
+	display: grid;
+	gap: 20px;
+	grid-template-columns: 3fr 1fr;
+	grid-template-rows: 1fr 1fr;
+	}
+
+	.content .campania-whatsapp {
+		grid-column: 1 / 2;
+		grid-row: 1 / 3;
+	}
+	.content .tienda-online {
+		grid-column: 1 / 2;
+		grid-row: 3 / 4;
+	}
+		.content .tienda-online img {
+			object-fit: contain;
+		}
+		@media screen and (max-width: 768px) {
+			.content .tienda-online img {
+			object-fit: contain;
+			}
+		}
+
+	.content .recursos-cuarentena {
+		grid-column: 2 / 3;
+		grid-row: 1 / 4;
+	}
+		.content .recursos-cuarentena > div {
+			position: relative;
+			background-image: url('../../../assets/img/home/publi-cuarentena.jpg');
+			background-position: center;
+			background-size: cover;
+			height: 100%;
+			width: 100%;
+		}
+		@media screen and (max-width: 768px) {
+			.content .recursos-cuarentena > div {
+			width: 100%;
+			display: flex;
+			}
+		}
+			.content .recursos-cuarentena > div img {
+			height: 100%;
+			object-fit: cover;
+			}
+			@media screen and (max-width: 768px) {
+				.content .recursos-cuarentena > div img {
+					width: 100%;
+				}
+			}
+		.content .recursos-cuarentena > div .texto-imagen {
+			position: absolute;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			top: 15%;
+			right: 7%;
+			left: 7%;
+		}
+			@media screen and (max-width: 768px) {
+			.content .recursos-cuarentena > div .texto-imagen {
+				top: 28%;
+			}
+			}
+		.content .recursos-cuarentena > div .texto-imagen * {
+			color: #fff;
+			text-transform: uppercase;
+			letter-spacing: 4px;
+		}
+
+	.campania-whatsapp,
+	.tienda-online,
+	.recursos-cuarentena {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.content .tienda-online {
+		position: relative;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.content .tienda-online .info-text {
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		width: 100%;
+		height: 100%;
+		text-align: center;
+	}
+
+	.content .tienda-online .info-text * {
+		color: #fff;
+	}
+
+	@media screen and (max-width: 768px) {
+		.section-campania-tienda .content {
+			display: grid;
+			gap: 10px;
+			grid-template-columns: 1fr;
+		}
+
+		.content .tienda-online > a {
+			height: 100%;
+			position: relative;
+			z-index: -1;
+		}
+
+		.content .campania-whatsapp {
+			grid-column: 1 / 2;
+			grid-row: 1 / 2;
+		}
+		.content .tienda-online {
+			grid-column: 1 / 2;
+			grid-row: 2 / 3;
+			overflow: hidden;
+		}
+		.content .recursos-cuarentena {
+			grid-column: 1 / 2;
+			grid-row: 3 / 4;
+			height: 60vh;
+			overflow: hidden;
+		}
+	}
