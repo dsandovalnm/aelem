@@ -1,1 +1,23 @@
-<p>descargas works!</p>
+<app-navbar></app-navbar>
+
+<app-header	[style]="'background-image: url(assets/img/descargas/header.jpg);background-position: bottom;background-attachment:fixed;background-size: cover;height:50vh;'"
+				[mainTitle]="'Descargas Online'">
+</app-header>
+
+<section class="section-descargas">
+	<div class="descargas-container">
+		<div class="categories-box">
+			<div class="descargas-categories">
+				<button *ngFor="let categoria of categorias" class="btn btn-category" [routerLinkActive]="'active-category'" [routerLink]="'./' + categoria.nombre">
+					<i [class]="categoria.icono"></i>
+					{{ categoria.texto }}
+				</button>
+			</div>
+		</div>
+		<div class="descargas-content">
+			<router-outlet></router-outlet>
+		</div>
+	</div>
+</section>
+
+<app-footer></app-footer>

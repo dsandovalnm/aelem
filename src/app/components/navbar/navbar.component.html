@@ -12,15 +12,13 @@
 				<li class="nav-item">
 					<a class="nav-link active" aria-current="page" [routerLink]="['/']">Home</a>
 				</li>
-				<li class="nav-item dropdown">					
-					<span class="badge badge-pill bg-danger">3</span>
+				<li *ngIf="seminariosLiveOn.length >= 1" class="nav-item dropdown">
+					<span class="badge badge-pill bg-danger">{{ seminariosLiveOn.length}} </span>
 					<a class="nav-link dropdown-toggle" href="#" id="nuevosSeminariosLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
 						Nuevos Seminarios
 					</a>
 					<ul class="dropdown-menu" [ngClass]="{'fixed' : fixed}" aria-labelledby="nuevosSeminariosLink">
-						<li><a class="dropdown-item" href="#">Seminario 1</a></li>
-						<li><a class="dropdown-item" href="#">Seminario 2</a></li>
-						<li><a class="dropdown-item" href="#">Seminario 3</a></li>
+						<li *ngFor="let seminarioLive of seminariosLiveOn"><a class="dropdown-item" [routerLink]="['/seminario_live/info', seminarioLive.codigo]"> {{ seminarioLive.nombre }} </a></li>
 					</ul>
 				</li>
 				<li class="nav-item">
@@ -40,7 +38,7 @@
 					</ul>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" [routerLink]="['descargas']">Descargas</a>
+					<a class="nav-link" [routerLink]="['/descargas']">Descargas</a>
 				</li>
 				<li class="nav-item">
 					<a class="nav-link" [routerLink]="['/cursos']">Inscribirme</a>

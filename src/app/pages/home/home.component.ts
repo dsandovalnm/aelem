@@ -30,10 +30,10 @@ export class HomeComponent implements OnInit, AfterContentInit {
                 private _ArticlesService: ArticlesService,
                 private _Sanitizer: DomSanitizer) {}
 
-  ngOnInit(): void {
-    this.getLastVideosCuarentena();
-    this.getCharlasAbiertas();
-    this.getLastArticles();
+  async ngOnInit() {
+    await this.getLastVideosCuarentena();
+    await this.getCharlasAbiertas();
+    await this.getLastArticles();
   }
 
   ngAfterContentInit(): void {
@@ -41,32 +41,62 @@ export class HomeComponent implements OnInit, AfterContentInit {
   }
 
   async getCharlasAbiertas() {
-    await this._CharlasAbiertasService.getAll()
-      .subscribe( charlas => {
-        charlas.response.map((charla: CharlaAbierta) => {
-          this.charlasAbiertas.push(charla);
+    let charlasP = new Promise((resolve, reject) => {
+      this._CharlasAbiertasService.getAll()
+        .subscribe( charlas => {
+          if(!charlas.status) {
+            reject(charlas);
+          }
+          
+          charlas.response.map((charla: CharlaAbierta) => this.charlasAbiertas.push(charla));
+
+          resolve(charlas.status);
         });
-      });
+    });
+
+    let result = await charlasP;
+    return result;
   }
 
   async getLastVideosCuarentena() {
-    await this._VideosPandemia.getLastN(3)
-      .subscribe(videos => {
-        videos.response.map((video: VideoPandemia) => {
-          let src = this._Sanitizer.bypassSecurityTrustResourceUrl(video.src);
-          video.src = src;
-          this.videosPandemia.push(video);
+    let videosP = new Promise((resolve, reject) => {
+      this._VideosPandemia.getLastN(3)
+        .subscribe(videos => {
+          if(!videos.status) {
+            reject(videos);
+          }
+
+          videos.response.map((video: VideoPandemia) => {
+            let src = this._Sanitizer.bypassSecurityTrustResourceUrl(video.src);
+            video.src = src;
+            this.videosPandemia.push(video);
+          });
+
+          resolve(videos.status);
         });
-      });
+    });
+
+
+    let result = await videosP;
+    return result;
   }
 
   async getLastArticles() {
-    await this._ArticlesService.getLastN(3)
-      .subscribe((articles:any) => {
-        articles.response.map((article:ArticleProfesional) => {
-          this.articles.push(article);
+    let articlesP = new Promise((resolve, reject) => {
+      this._ArticlesService.getLastN(3)
+        .subscribe((articles:any) => {
+          if(!articles.status) {
+            reject(articles);
+          }
+          
+          articles.response.map((article:ArticleProfesional) => this.articles.push(article));
+
+          resolve(articles.status);
         });
-      });
+    });
+
+    let result = await articlesP;
+    return result;
   }
 
 }

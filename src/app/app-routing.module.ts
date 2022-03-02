@@ -7,6 +7,7 @@ import { ArticulosComponent } from './pages/articulos/articulos.component';
 import { MainArticulosComponent } from './pages/articulos/main-articulos/main-articulos.component';
 import { VerArticuloComponent } from './pages/articulos/ver-articulo/ver-articulo.component';
 import { CursosComponent } from './pages/cursos/cursos.component';
+import { CategoriaDescargasComponent } from './pages/descargas/categoria-descargas/categoria-descargas.component';
 import { DescargasComponent } from './pages/descargas/descargas.component';
 import { HomeComponent } from './pages/home/home.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
@@ -49,7 +50,12 @@ const routes: Routes = [
     ]
   },
   { path: 'plataforma', component: PlataformaComponent },
-  { path: 'descargas', component: DescargasComponent },
+  { path: 'descargas', component: DescargasComponent,
+    children: [
+      { path: '', redirectTo: '/descargas/all', pathMatch: 'full' },
+      { path: ':categoria', component: CategoriaDescargasComponent }
+    ]  
+  },
   { path: '**', component: PageNotFoundComponent }
 ];
 

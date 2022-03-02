@@ -1,0 +1,20 @@
+<div class="descargas-items">
+	<app-spinner class="mx-auto" *ngIf="descargasFiltered.length <= 0;else showDescargas"></app-spinner>
+	<ng-template #showDescargas>
+		<div *ngFor="let descarga of descargasFiltered" class="card-item">
+			<div class="header-card">
+				<img [src]="'assets/img/descargas/' + descarga.imagen" [alt]="'Imagen' + descarga.nombre_descarga " class="image-item">
+			</div>
+			<div class="content-card">
+				<p class="descarga_name"> {{ descarga.nombre_descarga }} </p>
+				<span class="descarga_label"> {{ descarga.nombre_categoria }} </span>
+			</div>
+			<div class="footer-card">
+				<button class="btn btn-descargas btn-block w-100">
+					<i class="fa-solid fa-download"></i>
+					Descargar
+				</button>
+			</div>
+		</div>
+	</ng-template>
+</div>

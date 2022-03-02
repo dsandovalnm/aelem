@@ -13,6 +13,7 @@ import { MainArticulosComponent } from './articulos/main-articulos/main-articulo
 import { PageArticulosComponent } from './articulos/main-articulos/page-articulos/page-articulos.component';
 import { VerArticuloComponent } from './articulos/ver-articulo/ver-articulo.component';
 import { CursosComponent } from './cursos/cursos.component';
+import { CategoriaDescargasComponent } from './descargas/categoria-descargas/categoria-descargas.component';
 import { DescargasComponent } from './descargas/descargas.component';
 import { HomeComponent } from './home/home.component';
 import { InscribirmeComponent } from './inscribirme/inscribirme.component';
@@ -44,7 +45,8 @@ import { SeminarioLiveComponent } from './seminario-live/seminario-live.componen
     VerAlgoParaLeerComponent,
     MainAlgoParaLeerComponent,
     PageArticulosComponent,
-    PageArticulosLeerComponent
+    PageArticulosLeerComponent,
+    CategoriaDescargasComponent
   ],
   imports: [
     CommonModule,

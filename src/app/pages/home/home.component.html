@@ -21,33 +21,33 @@
 <section class="section-header text-center">
 	<div class="header-boxes">
 		<div class="header-box first">
-			<a [routerLink]="['/articulos', articles[1].codigo]">
+			<a [routerLink]="['/articulos/ver', articles[1].codigo]">
 				<img [src]="'assets/img/articles/'+articles[1].imagen_articulo" alt="Imagen Articulo">
 			</a>
 			<div class="header-box-text">
-				<a [routerLink]="['/articulos', articles[1].codigo]">
+				<a [routerLink]="['/articulos/ver', articles[1].codigo]">
 					<p class="title"><strong> {{ articles[1].titulo_articulo }} </strong></p>
 					<small class="no-mobile"> {{ articles[1].articulo_descripcion }} </small>
 				</a>
 			</div>
 		</div>
 		<div class="header-box second">
-			<a [routerLink]="['/articulos', articles[2].codigo]">
+			<a [routerLink]="['/articulos/ver', articles[2].codigo]">
 				<img [src]="'assets/img/articles/'+articles[2].imagen_articulo" alt="Imagen Articulo">
 			</a>
 			<div class="header-box-text">
-				<a [routerLink]="['/articulos', articles[2].codigo]">
+				<a [routerLink]="['/articulos/ver', articles[2].codigo]">
 					<p class="title"><strong> {{ articles[2].titulo_articulo }} </strong></p>
 					<small class="no-mobile"> {{ articles[2].articulo_descripcion }} </small>
 				</a>
 			</div>
 		</div>
 		<div class="header-box third">
-			<a [routerLink]="['/articulos', articles[0].codigo]">
+			<a [routerLink]="['/articulos/ver', articles[0].codigo]">
 				<img [src]="'assets/img/articles/'+articles[0].imagen_articulo" alt="Imagen Articulo">
 			</a>
 			<div class="header-box-text">
-				<a [routerLink]="['/articulos', articles[0].codigo]">
+				<a [routerLink]="['/articulos/ver', articles[0].codigo]">
 					<p class="title"><strong> {{ articles[0].titulo_articulo }} </strong></p>
 					<small class="no-mobile"> {{ articles[0].articulo_descripcion }} </small>
 				</a>

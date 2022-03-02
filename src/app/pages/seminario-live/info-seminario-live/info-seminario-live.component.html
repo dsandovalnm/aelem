@@ -1,1 +1,40 @@
-<p>info-seminario-live works!</p>
+<app-header	[style]="'background-image: url(assets/img/articles/header.jpg);background-position: bottom;background-attachment:fixed;background-size: cover;height:50vh;'"
+				[mainTitle]="'Seminario Online en Vivo'"
+				[subTitle]="seminarioLive.nombre">
+</app-header>
+
+<section class="section-seminario-live">
+	<h4 class="title text-center col-12 py-4"> {{ seminarioLive.nombre }} </h4> 
+	<div class="seminario-box flex-wrap col-12">
+		<div class="video-box col-12 col-sm-5">
+			<div class="video-iframe">
+				<iframe class="intro" src="'asdfasdf'" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+			</div>
+		</div>
+
+		<div class="seminario-box-content col-sm-7">
+			<div class="texto-desc-1" [innerHtml]="seminarioLive.texto_descriptivo_1"></div>
+	
+			<div class="descripcion-box col-12 col-sm-7 text-justify">			
+				<div class="temas-seminario col-12 mt-4">
+					<h5 class="title text-left">Temas a desarrollar</h5>
+					<div id="temas-box" class="owl-carousel">
+							<div class="grupo-temas">
+								<div class="tema d-flex justify-content-start align-items-center">
+									<i class="far fa-check-square task-icon"></i>
+									<p class="text-left">Tema del Seminario</p>
+								</div>
+							</div>
+					</div>
+				</div>
+	
+				<div class="texto-desc-2" [innerHtml]="seminarioLive.texto_descriptivo_2"></div>
+			</div>
+
+
+			<p>Esperamos haber quitado tus dudas respecto a este programa, pero ante cualquier pregunta o inquietud no dejes de consultarnos.</p>
+			<br/>
+			<a [routerLink]="['/seminario_live/registro', seminarioLive.codigo]" class="text-center btn bubble-btn btn-semi_live btn-round mt-4 d-block mx-auto">Me interesa, quiero saber costos!</a>
+		</div>
+	</div>
+</section>

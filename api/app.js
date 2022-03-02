@@ -25,6 +25,9 @@ const app = express();
 	app.use('/api/videospandemia', require('./routes/videosPandemia'));
 	app.use('/api/cursosseminarios', require('./routes/cursos_seminarios'));
 	app.use('/api/precios', require('./routes/precios'));
+	app.use('/api/descargas', require('./routes/descargas'));
+	app.use('/api/categorias', require('./routes/categorias'));
+	app.use('/api/seminarios_live', require('./routes/seminariosLive'));
 
 /* Port Conf */
 	const PORT = process.env.PORT || 3000;

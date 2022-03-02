@@ -1,4 +1,6 @@
 import { Component, HostListener, OnInit } from '@angular/core';
+import { SeminarioLive } from 'src/app/interfaces/seminarioLive';
+import { SeminariosLiveService } from 'src/app/services/seminarios-live.service';
 
 @Component({
   selector: 'app-navbar',
@@ -8,6 +10,8 @@ import { Component, HostListener, OnInit } from '@angular/core';
 export class NavbarComponent implements OnInit {
 
   fixed: boolean = false;
+  seminariosLive: SeminarioLive[] = [];
+  seminariosLiveOn: SeminarioLive[] = [];
 
   @HostListener('window:scroll', ['$event'])
     windowScroll($event: Event) {
@@ -20,9 +24,30 @@ export class NavbarComponent implements OnInit {
       }
     }
 
-  constructor() { }
+  constructor(  private _SeminariosLiveService: SeminariosLiveService) { }
 
-  ngOnInit(): void {
+  async ngOnInit() {
+    await this.getSeminariosLive();
+
+    this.seminariosLiveOn = this.seminariosLive.filter(seminario => seminario.visible == 1);
+  }
+
+  async getSeminariosLive() {
+    let seminarioLiveP = new Promise((resolve, reject) => {
+      this._SeminariosLiveService.getAll()
+        .subscribe(seminariosLive => {
+          if(!seminariosLive.status) {
+            reject(seminariosLive);
+          }
+
+          seminariosLive.response.map((seminarioLive: SeminarioLive) => this.seminariosLive.push(seminarioLive));
+
+          resolve(seminariosLive.status);
+        });
+    });
+
+    let result = await seminarioLiveP;
+    return result;
   }
 
 }
