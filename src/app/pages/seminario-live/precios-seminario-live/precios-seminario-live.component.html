@@ -1,0 +1,66 @@
+<app-header	[style]="'background-image: url(assets/img/seminarios_live/header.jpg);background-position: top;background-attachment:fixed;background-size: cover;height:50vh;'"
+				[mainTitle]="'Precios'"
+				[subTitle]="seminarioLive.nombre">
+</app-header>
+
+<div class="container py-4">
+	<h5 class="text-center p-3">Estás a punto de realizar tu suscripción al seminario: <br/> <strong> {{ seminarioLive.nombre }} </strong> </h5>
+	<div class="main-box col-12">
+
+			<form action="/cart.php" class="d-flex flex-wrap justify-content-center align-items-center p-0" method="post">
+				<div class="costos-inversion col-8">
+					<h5 class="title col-12 text-center pt-3">Costos de Inversión</h5>
+					<div class="costos col-12 font-weight-bold text-center">
+							<h6><strong>Por favor seleccione un precio</strong></h6>
+							<p><i>Es importarte que marque el precio para poder continuar con el proceso de pago</i></p>
+
+							<div class="box-precios">
+
+								<div *ngIf="location.countryname == 'Argentina'; then argentina else exterior"></div>
+
+								<ng-template #argentina>
+									<div *ngFor="let precio of preciosSeminario" class="tipo-precio-box">
+										<div *ngIf="precio.tipo == 'argentina'" class="costo-box col-12 col-sm-6">
+											<p>Argentina <br/> {{ precio.descripcion }} </p>
+											<p><strong>$ARS {{ precio.valor }} </strong></p>
+											<input type="radio" id="course_price" name="course_price" [value]="precio.valor" style="width: 20px; height: 20px;" required>
+										</div>
+									</div>
+								</ng-template>
+								
+								<ng-template #exterior>
+									<div *ngFor="let precio of preciosSeminario" class="tipo-precio-box">
+										<div *ngIf="precio.tipo == 'argentina'" class="costo-box col-12 col-sm-6">
+											<p>Exterior <br/> {{ precio.descripcion }} </p>
+											<p><strong>$USD {{ precio.valor }} </strong></p>
+											<input type="radio" id="course_price" name="course_price" [value]="precio.valor" style="width: 20px; height: 20px;" required>
+										</div>
+									</div>
+								</ng-template>
+
+							</div>
+					</div>
+				</div>
+			
+				<div class="register-live-form col-12 col-sm-6">
+					<input type="hidden" value="<?php echo(openssl_encrypt($seminario['info']['modalidad'],COD,KEY)); ?>" name="course_modality" id="course_modality">
+					<input type="hidden" value="<?php echo(openssl_encrypt($country,COD,KEY)); ?>" name="country" id="country">
+					<input type="hidden" value="<?php echo(openssl_encrypt($seminario['details']['codigo_externo'],COD,KEY)); ?>" name="course_code" id="course_code">
+					<input type="hidden" value="<?php echo(openssl_encrypt($seminario['info']['nombre'],COD,KEY)); ?>" name="course_name" id="course_name">
+					<input type="hidden" value="<?php echo $seminario['details']['grupo_actual']; ?>" name="grupo_actual" id="grupo_actual">
+					<input type="hidden" value="<?php echo(openssl_encrypt('seminario.jpg',COD,KEY)); ?>" name="course_image" id="course_image">
+					<input type="hidden" value="<?php echo(openssl_encrypt(1,COD,KEY)); ?>" name="course_quantity" id="course_quantity">
+
+							<div class="form-check text-center d-flex justify-content-around">
+								<input class="form-check-input position-relative" type="checkbox" id="acepto" name="acepto" required>
+								<label class="form-check-label" for="acepto" style="width:90%;">
+									<p style="font-size:15px;">He leído y acepto las indicaciones enviadas por correo que me informan que el seminario online <strong>NOMBRE DEL SEMINARIO</strong>, no es un tratamiento médico sino un programa de desarrollo personal</p>
+								</label>
+							</div>
+
+					<button type="submit" id="submit_form" name="submit_form" value="add_course" class="btn btn-info btn-block w-100 py-2">Suscribirme Ahora!</button>
+				</div>
+			</form>
+
+	</div>
+</div>

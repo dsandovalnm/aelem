@@ -40,6 +40,8 @@
 
 .section-seminario-live .seminario-box .video-box {
 	position: relative;
+	padding: 2rem;
+	height: 300px;
 }
 	.section-seminario-live .seminario-box .video-iframe {
 		position: -webkit-sticky;

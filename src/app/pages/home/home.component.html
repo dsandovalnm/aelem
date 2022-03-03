@@ -20,39 +20,42 @@
 
 <section class="section-header text-center">
 	<div class="header-boxes">
-		<div class="header-box first">
-			<a [routerLink]="['/articulos/ver', articles[1].codigo]">
-				<img [src]="'assets/img/articles/'+articles[1].imagen_articulo" alt="Imagen Articulo">
-			</a>
-			<div class="header-box-text">
+		<app-spinner *ngIf="articles.length <= 0; else showArticles"></app-spinner>
+		<ng-template #showArticles>
+			<div class="header-box first">
 				<a [routerLink]="['/articulos/ver', articles[1].codigo]">
-					<p class="title"><strong> {{ articles[1].titulo_articulo }} </strong></p>
-					<small class="no-mobile"> {{ articles[1].articulo_descripcion }} </small>
+					<img [src]="'assets/img/articles/'+articles[1].imagen_articulo" alt="Imagen Articulo">
 				</a>
+				<div class="header-box-text">
+					<a [routerLink]="['/articulos/ver', articles[1].codigo]">
+						<p class="title"><strong> {{ articles[1].titulo_articulo }} </strong></p>
+						<small class="no-mobile"> {{ articles[1].articulo_descripcion }} </small>
+					</a>
+				</div>
 			</div>
-		</div>
-		<div class="header-box second">
-			<a [routerLink]="['/articulos/ver', articles[2].codigo]">
-				<img [src]="'assets/img/articles/'+articles[2].imagen_articulo" alt="Imagen Articulo">
-			</a>
-			<div class="header-box-text">
+			<div class="header-box second">
 				<a [routerLink]="['/articulos/ver', articles[2].codigo]">
-					<p class="title"><strong> {{ articles[2].titulo_articulo }} </strong></p>
-					<small class="no-mobile"> {{ articles[2].articulo_descripcion }} </small>
+					<img [src]="'assets/img/articles/'+articles[2].imagen_articulo" alt="Imagen Articulo">
 				</a>
+				<div class="header-box-text">
+					<a [routerLink]="['/articulos/ver', articles[2].codigo]">
+						<p class="title"><strong> {{ articles[2].titulo_articulo }} </strong></p>
+						<small class="no-mobile"> {{ articles[2].articulo_descripcion }} </small>
+					</a>
+				</div>
 			</div>
-		</div>
-		<div class="header-box third">
-			<a [routerLink]="['/articulos/ver', articles[0].codigo]">
-				<img [src]="'assets/img/articles/'+articles[0].imagen_articulo" alt="Imagen Articulo">
-			</a>
-			<div class="header-box-text">
+			<div class="header-box third">
 				<a [routerLink]="['/articulos/ver', articles[0].codigo]">
-					<p class="title"><strong> {{ articles[0].titulo_articulo }} </strong></p>
-					<small class="no-mobile"> {{ articles[0].articulo_descripcion }} </small>
+					<img [src]="'assets/img/articles/'+articles[0].imagen_articulo" alt="Imagen Articulo">
 				</a>
+				<div class="header-box-text">
+					<a [routerLink]="['/articulos/ver', articles[0].codigo]">
+						<p class="title"><strong> {{ articles[0].titulo_articulo }} </strong></p>
+						<small class="no-mobile"> {{ articles[0].articulo_descripcion }} </small>
+					</a>
+				</div>
 			</div>
-		</div>
+		</ng-template>
 		<div class="header-box fourth">
 			<div class="info-text">
 				<h6 class="texto-imagen">Recibí tu ayuda por whatsapp</h6>
@@ -175,7 +178,7 @@
 				</a>
 		</div>
 		<div class="tienda-online">
-				<a href="/descargas_online">
+				<a [routerLink]="['/descargas']">
 					<img class="no-mobile" src="assets/img/home/publi-descargas.jpg" alt="Descargas Imagen">
 					<img class="mobile" src="assets/img/home/publi-descargas_mb.jpg" alt="Descargas Imagen">
 				</a>

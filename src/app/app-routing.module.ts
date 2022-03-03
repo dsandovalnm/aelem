@@ -15,6 +15,7 @@ import { PandemiaComponent } from './pages/pandemia/pandemia.component';
 import { PlataformaComponent } from './pages/plataforma/plataforma.component';
 import { InfoSeminarioLiveComponent } from './pages/seminario-live/info-seminario-live/info-seminario-live.component';
 import { NoCodeSeminarioLiveComponent } from './pages/seminario-live/no-code-seminario-live/no-code-seminario-live.component';
+import { PreciosSeminarioLiveComponent } from './pages/seminario-live/precios-seminario-live/precios-seminario-live.component';
 import { RegistroSeminarioLiveComponent } from './pages/seminario-live/registro-seminario-live/registro-seminario-live.component';
 import { SeminarioLiveComponent } from './pages/seminario-live/seminario-live.component';
 
@@ -27,7 +28,9 @@ const routes: Routes = [
       { path: 'info', component: NoCodeSeminarioLiveComponent },
       { path: 'info/:codigo', component: InfoSeminarioLiveComponent },
       { path: 'registro', component: NoCodeSeminarioLiveComponent },
-      { path: 'registro/:codigo', component: RegistroSeminarioLiveComponent }
+      { path: 'registro/:codigo', component: RegistroSeminarioLiveComponent },
+      { path: 'precios', component: NoCodeSeminarioLiveComponent },
+      { path: 'precios/:codigo', component: PreciosSeminarioLiveComponent },
     ]
   },
   { path: 'pandemia', component: PandemiaComponent },
@@ -60,7 +63,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { scrollPositionRestoration: 'enabled' })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

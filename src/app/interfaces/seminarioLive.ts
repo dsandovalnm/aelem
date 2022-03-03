@@ -1,3 +1,5 @@
+import { SafeResourceUrl } from "@angular/platform-browser";
+
 export interface SeminarioLive {
 	id: number;
 	codigo: number;
@@ -12,7 +14,7 @@ export interface SeminarioLive {
 	texto_descriptivo_1: string;
 	texto_descriptivo_2: string;
 	imagen: string;
-	video_intro: string;
+	video_intro: any | string | SafeResourceUrl;
 	profesional: number;
 	visible: number;
 }

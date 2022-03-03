@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import { SeminarioLive } from 'src/app/interfaces/seminarioLive';
 import { SeminariosLiveService } from 'src/app/services/seminarios-live.service';
@@ -12,9 +13,11 @@ export class InfoSeminarioLiveComponent implements OnInit {
 
   seminarioLive: SeminarioLive = {} as SeminarioLive;
   codigoSeminarioLive: number = 0;
+  src: any;
 
   constructor(  private _SeminariosLiveService: SeminariosLiveService,
-                private _ActivatedRoute: ActivatedRoute) { }
+                private _ActivatedRoute: ActivatedRoute,
+                private _Sanitizer: DomSanitizer) { }
 
   async ngOnInit() {
     this._ActivatedRoute.params.subscribe(params => {
@@ -32,7 +35,14 @@ export class InfoSeminarioLiveComponent implements OnInit {
             reject(seminario);
           }
 
-          seminario.response.map((seminario: SeminarioLive) => this.seminarioLive = seminario);
+          seminario.response.map((seminario: SeminarioLive) => {
+            if(seminario.video_intro !== '') {
+              let src = this._Sanitizer.bypassSecurityTrustResourceUrl(seminario.video_intro);
+              seminario.video_intro = src;
+            }
+
+            this.seminarioLive = seminario;
+          });
 
           resolve(seminario.status);
         });

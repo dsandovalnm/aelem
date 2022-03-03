@@ -12,11 +12,10 @@
 <app-cursos-seminarios-content	[sectionName]="'seminarios'"
 											[content]="seminarios"></app-cursos-seminarios-content>
 
-
 <section class="section-precio">
 	<div class="precio-box container">
 		<div class="head-precio">
-				<h4 class="title text-center font-white">Plan Suscripción Premium</h4>
+			<h4 class="title text-center font-white">Plan Suscripción Premium</h4>
 		</div>
 		<div class="content-precio">
 				<div class="beneficios col-12 col-sm-4">
@@ -37,7 +36,7 @@
 					<!-- Contenedor de Precios Argentina -->
 						<!-- Mensual Argentina -->
 						<div [ngStyle]="{'display': precio.tipo !== 'argentina' ? 'none' : 'inline-block'}" *ngFor="let precio of preciosMes" class="precios mensual col-12 col-sm-4 text-center">
-							<div *ngIf="precio.tipo === 'argentina' && location.countrycode === 'AR'">
+							<div *ngIf="precio.tipo === 'argentina' && location !== undefined && location.countrycode === 'AR'">
 								<p class="title">Inversión Mensual</p>
 								<p><i>Débito Automático</i></p>
 								<p class="title"><span style="font-size: 2rem;"> {{ precio.valor }} </span><sup> ARS </sup> / Mes</p>
@@ -59,7 +58,7 @@
 
 						<!-- Semestral Argentina -->
 						<div [ngStyle]="{'display': precio.tipo !== 'argentina' ? 'none' : 'inline-block'}" *ngFor="let precio of preciosSemestre" class="precios semestral col-12 col-sm-4 text-center">
-							<div *ngIf="precio.tipo === 'argentina' && location.countrycode === 'AR'">
+							<div *ngIf="precio.tipo === 'argentina' && location !== undefined && location.countrycode === 'AR'">
 								<p class="title">Inversión Semestral</p>
 								<p><i>Pago Manual</i></p>
 								<p class="title"><span style="font-size: 2rem;"> {{ precio.valor }} </span><sup> ARS </sup> / Semestral</p>
@@ -82,7 +81,7 @@
 					<!-- Contador de Precios Exterior -->
 						<!-- Mensual Exterior -->
 						<div [ngStyle]="{'display': precio.tipo === 'argentina' ? 'none' : 'inline-block'}" *ngFor="let precio of preciosMes" class="precios mensual col-12 col-sm-4 text-center">
-							<div *ngIf="precio.tipo !== 'argentina' && location.countrycode !== 'AR'">
+							<div *ngIf="precio.tipo !== 'argentina' && location !== undefined && location.countrycode !== 'AR'">
 								<p class="title">Inversión Mensual</p>
 								<p><i>Débito Automático</i></p>
 								<p class="title"><span style="font-size: 2rem;"> {{ precio.valor }} </span><sup> USD </sup> / Mes</p>
@@ -104,7 +103,7 @@
 
 						<!-- Semestral Exterior -->
 						<div [ngStyle]="{'display': precio.tipo === 'argentina' ? 'none' : 'inline-block'}" *ngFor="let precio of preciosSemestre" class="precios semestral col-12 col-sm-4 text-center">
-							<div *ngIf="precio.tipo !== 'argentina' && location.countrycode !== 'AR'">
+							<div *ngIf="precio.tipo !== 'argentina' && location !== undefined && location.countrycode !== 'AR'">
 								<p class="title">Inversión Semestral</p>
 								<p><i>Pago Manual</i></p>
 								<p class="title"><span style="font-size: 2rem;"> {{ precio.valor }} </span><sup> USD </sup> / Semestral</p>

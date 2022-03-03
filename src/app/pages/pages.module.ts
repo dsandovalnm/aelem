@@ -22,6 +22,7 @@ import { PandemiaComponent } from './pandemia/pandemia.component';
 import { PlataformaComponent } from './plataforma/plataforma.component';
 import { InfoSeminarioLiveComponent } from './seminario-live/info-seminario-live/info-seminario-live.component';
 import { NoCodeSeminarioLiveComponent } from './seminario-live/no-code-seminario-live/no-code-seminario-live.component';
+import { PreciosSeminarioLiveComponent } from './seminario-live/precios-seminario-live/precios-seminario-live.component';
 import { RegistroSeminarioLiveComponent } from './seminario-live/registro-seminario-live/registro-seminario-live.component';
 import { SeminarioLiveComponent } from './seminario-live/seminario-live.component';
 
@@ -46,7 +47,8 @@ import { SeminarioLiveComponent } from './seminario-live/seminario-live.componen
     MainAlgoParaLeerComponent,
     PageArticulosComponent,
     PageArticulosLeerComponent,
-    CategoriaDescargasComponent
+    CategoriaDescargasComponent,
+    PreciosSeminarioLiveComponent
   ],
   imports: [
     CommonModule,
@@ -74,7 +76,9 @@ import { SeminarioLiveComponent } from './seminario-live/seminario-live.componen
     VerAlgoParaLeerComponent,
     MainAlgoParaLeerComponent,
     PageArticulosComponent,
-    PageArticulosLeerComponent
+    PageArticulosLeerComponent,
+    CategoriaDescargasComponent,
+    PreciosSeminarioLiveComponent
   ]
 })
 export class PagesModule { }

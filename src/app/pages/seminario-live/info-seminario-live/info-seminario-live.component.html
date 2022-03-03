@@ -1,4 +1,4 @@
-<app-header	[style]="'background-image: url(assets/img/articles/header.jpg);background-position: bottom;background-attachment:fixed;background-size: cover;height:50vh;'"
+<app-header	[style]="'background-image: url(assets/img/seminarios_live/header.jpg);background-position: top;background-attachment:fixed;background-size: cover;height:50vh;'"
 				[mainTitle]="'Seminario Online en Vivo'"
 				[subTitle]="seminarioLive.nombre">
 </app-header>
@@ -8,7 +8,7 @@
 	<div class="seminario-box flex-wrap col-12">
 		<div class="video-box col-12 col-sm-5">
 			<div class="video-iframe">
-				<iframe class="intro" src="'asdfasdf'" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+				<iframe class="intro" [src]="seminarioLive.video_intro" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
 			</div>
 		</div>
 
@@ -34,7 +34,7 @@
 
 			<p>Esperamos haber quitado tus dudas respecto a este programa, pero ante cualquier pregunta o inquietud no dejes de consultarnos.</p>
 			<br/>
-			<a [routerLink]="['/seminario_live/registro', seminarioLive.codigo]" class="text-center btn bubble-btn btn-semi_live btn-round mt-4 d-block mx-auto">Me interesa, quiero saber costos!</a>
+			<a [routerLink]="['/seminario_live/precios', seminarioLive.codigo]" class="text-center btn bubble-btn btn-semi_live btn-round mt-4 d-block mx-auto">Me interesa, quiero saber costos!</a>
 		</div>
 	</div>
 </section>
