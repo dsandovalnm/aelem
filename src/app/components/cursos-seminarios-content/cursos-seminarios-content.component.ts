@@ -10,10 +10,25 @@ export class CursosSeminariosContentComponent implements OnInit {
 
   @Input() sectionName = '';
   @Input() content: FullCursoSeminario[] = [];
+  slidesContent: any[] = [];
 
   constructor() { }
 
   ngOnInit(): void {
+    let arrIndex = 0;
+    let arr: any[] = [];
+    this.content.map(item => {
+      arr.push(item);
+
+      if(arr.length === 4) {
+        this.slidesContent[arrIndex] = arr;
+        arrIndex++;
+        arr = [];
+      }
+    });
+    console.log(this.slidesContent);
   }
+
+  
 
 }

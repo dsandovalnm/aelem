@@ -1,4 +1,4 @@
-<app-header	[style]="'background-image: url(assets/img/seminarios_live/header.jpg);background-position: top;background-attachment:fixed;background-size: cover;height:50vh;'"
+<app-header	[style]="'background-image: url(assets/img/seminarios_live/header.jpg);background-position: top;background-attachment:fixed;background-size: cover;height:60vh;'"
 				[mainTitle]="'Seminario Online en Vivo'"
 				[subTitle]="seminarioLive.nombre">
 </app-header>
@@ -13,7 +13,8 @@
 		</div>
 
 		<div class="seminario-box-content col-sm-7">
-			<div class="texto-desc-1" [innerHtml]="seminarioLive.texto_descriptivo_1"></div>
+			
+			<div class="texto-desc-1" [innerHtml]="seminarioLive.texto_descriptivo_1 | safe:'html'"></div>
 	
 			<div class="descripcion-box col-12 col-sm-7 text-justify">			
 				<div class="temas-seminario col-12 mt-4">

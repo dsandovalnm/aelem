@@ -20,9 +20,9 @@ export class HomeComponent implements OnInit, AfterContentInit {
   videosPandemia: VideoPandemia[] = [];
 
   bannerImgs = [
-    { src : 'banner_1.jpg' },
-    { src : 'banner_2.jpg' },
-    { src : 'banner_3.jpg' }
+    { src : 'banner_1.jpg', src_mb: 'banner_1_mb.jpg' },
+    { src : 'banner_2.jpg', src_mb: 'banner_2_mb.jpg' },
+    { src : 'banner_3.jpg', src_mb: 'banner_3_mb.jpg' }
   ];
 
   constructor(  private _CharlasAbiertasService: CharlasAbiertasService,

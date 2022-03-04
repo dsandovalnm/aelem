@@ -169,8 +169,17 @@ hr {
 	section {
 		padding: 10px 70px;
 	}
+		@media screen and (max-width: 768px) {
+			section {
+				padding: 1rem .3rem;
+			}
+		}
 
 	/* Buttons */
+		button:focus {
+			box-shadow: none!important;
+		}
+
 		.bubble-btn {
 			margin: 0 auto;
 			margin-top: 0px;

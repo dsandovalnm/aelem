@@ -1,9 +1,9 @@
 <app-navbar></app-navbar>
-<app-header	[style]="'background-image: url(assets/img/pandemia/header.jpg); background-size:cover; background-position: top center; background-attachment: fixed; height:70vh;'"
+<app-header	[style]="'background-image: url(assets/img/pandemia/header.jpg); background-size:cover; background-position: top center; background-attachment: fixed; height:100vh;'"
 				[mainTitle]="'Educación Emocional'"
 				[subTitle]="'En Tiempos de Pandemia'"
 				[description]="'Les damos la bienvenida y esperamos que puedan recibir herramientas prácticas para atravesar cada adversidad que se presenta delante de ustedes. Especialmente en este tiempo donde en muchas naciones están en pandemia hemos decidido brindar todo este contenido de forma gratuita, para que sea de ayuda para el HOY y así puedan atravesar este tiempo de aislamiento de manera funcional. Esperamos sea de ayuda para sus vidas! Ayúdanos a compartir este contenido. Mis afectos para con ustedes.'"
-				[descriptionFontSize]="'1rem'">
+				[descriptionFontSize]="'.8rem'">
 </app-header>
 
 <section class="contenido-audiovisual">
@@ -16,13 +16,15 @@
 			<div id="videos-cuarentena" class="videos-cuarentena py-3 text-center">
 				<swiper	class="swiper videos"
 							[autoplay]="false"
+							[spaceBetween]="10"
 							[slidesPerView]="1"
 							[navigation]="true">
 
 							<ng-template *ngFor="let video of videosPandemia" swiperSlide>
 								<div class="item">
 									<h5 class="py-2"> {{ video.titulo }} </h5>
-									<iframe [src]="video.src" frameborder="0" allow="autoplay; fullscreen" allowfullscreen style="height:65vh;"></iframe>
+									<iframe class="no-mobile" [src]="video.src" frameborder="0" allow="autoplay; fullscreen" allowfullscreen style="height:65vh;"></iframe>
+									<iframe class="mobile" [src]="video.src" frameborder="0" allow="autoplay; fullscreen" allowfullscreen style="height:80vh;"></iframe>
 								</div>
 							</ng-template>
 				</swiper>
@@ -40,7 +42,8 @@
 					[autoplay]="false"
 					[navigation]="true"
 					[spaceBetween]="20"
-					[slidesPerView]="4">
+					[slidesPerView]="1"
+					[breakpoints]="{'768': {'slidesPerView': 4}}">
 
 						<ng-template *ngFor="let articulo of articulosPandemia" swiperSlide>
 							<div class="art-content box d-flex flex-column justify-content-between">

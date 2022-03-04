@@ -3,14 +3,22 @@
 				[mainTitle]="'Beneficios Exclusivos'"
 				[subTitle]="'Cursos y Seminarios'"
 				[description]="'Clases Semanales y Personalizadas en Vivo con el Dr. Sebastián Palermo'"
-				[descriptionFontSize]="'1.5rem'">
+				[descriptionFontSize]="'1.3rem'">
 </app-header>
 
-<app-cursos-seminarios-content	[sectionName]="'cursos'"
-											[content]="cursos"></app-cursos-seminarios-content>
 
-<app-cursos-seminarios-content	[sectionName]="'seminarios'"
-											[content]="seminarios"></app-cursos-seminarios-content>
+<app-spinner *ngIf="cursos.length <= 0; else showCursos;"></app-spinner>
+	<ng-template #showCursos>
+		<app-cursos-seminarios-content	[sectionName]="'cursos'"
+													[content]="cursos"></app-cursos-seminarios-content>	
+	</ng-template>
+
+<app-spinner *ngIf="seminarios.length <= 0; else showSeminarios;"></app-spinner>
+	<ng-template #showSeminarios>
+		<app-cursos-seminarios-content	[sectionName]="'seminarios'"
+													[content]="seminarios"></app-cursos-seminarios-content>
+	</ng-template>
+
 
 <section class="section-precio">
 	<div class="precio-box container">

@@ -18,12 +18,24 @@
 		width: 100%;
 		display: flex;
 		justify-content: center;
+		transition: all .2s ease-in-out;
 	}
 	.dropdown-menu {
 		top: 53px;
 		border: none;
 		border-radius: 0;
 	}
+		.btn-bar {
+			width: 30px;
+			height: 5px;
+			border-radius: 10px;
+			background-color: var(--main-color);
+			margin: .2rem 0;
+			transition: all .2s ease-in-out;
+		}
+		.fixed .btn-bar {
+			background-color: #fff;
+		}
 
 	.nav-link,
 	.dropdown-item {
@@ -31,6 +43,12 @@
 		text-transform: uppercase;
 		color: var(--main-color);
 	}
+		@media screen and (max-width: 768px) {
+			.nav-link,
+			.dropdown-item {
+				white-space: break-spaces;
+			}
+		}
 	.nav-link:hover {
 		border-bottom: 2px solid var(--main-color);
 	}

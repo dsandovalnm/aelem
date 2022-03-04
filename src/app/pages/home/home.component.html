@@ -11,7 +11,8 @@
 					
 					<ng-template *ngFor="let image of bannerImgs" swiperSlide>
 						<a [routerLink]="['/cursos']">
-							<img [src]="'assets/img/home/'+image.src" alt="Banner Aelem">
+							<img class="no-mobile" [src]="'assets/img/home/'+image.src" alt="Banner Aelem" width="100%">
+							<img class="mobile" [src]="'assets/img/home/'+image.src_mb" alt="Banner Aelem" width="100%">
 						</a>
 					</ng-template>
 					
@@ -89,8 +90,9 @@
 				<h6 class="title">Bitácora del día</h6>
 				<div class="black-divider"></div>
 				<div id="bitacora-slider" class="bitacora-slider owl-carousel">
-					<swiper	[slidesPerView]="3"
-								[preventClicks]="true">
+					<swiper	[slidesPerView]="1"
+								[preventClicks]="true"
+								[breakpoints]="{'768': {'slidesPerView': 3}}">
 
 								<ng-template *ngFor="let video of videosPandemia" swiperSlide>
 									<div class="video">

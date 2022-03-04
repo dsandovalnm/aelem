@@ -30,7 +30,7 @@
 }
 @media screen and (max-width: 768px){
 	.section-seminario-live .seminario-box {
-		padding: 0;
+		padding: 1rem .2rem;
 	}
 }
 
