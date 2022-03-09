@@ -1,9 +1,12 @@
 const express = require('express');
 const router = express.Router();
-const ArticlesController = require('../controllers/articlesController');
+const articlesController = require('../controllers/articlesController');
 
-router.get('/', require('../controllers/articlesController').getAll);
-router.get('/last/:amount', require('../controllers/articlesController').getLastN);
-router.get('/:code', require('../controllers/articlesController').getByCode);
+router.get('/', articlesController.getAll);
+router.get('/:code', articlesController.getByCode);
+router.get('/titulo/:titulo', articlesController.getByTitle);
+router.get('/profesional/:profesionalId', articlesController.getByProfesionalId);
+router.get('/titulo_profesional/:titulo/:profesionalId', articlesController.getByTitleProf);
+router.get('/last/:amount', articlesController.getLastN);
 
 module.exports = router;

@@ -1,3 +1,4 @@
+const { CONNREFUSED } = require('dns');
 const con = require('../includes/db_connect');
 
 class SeminarioLive {
@@ -18,6 +19,7 @@ class SeminarioLive {
 	video_intro = '';
 	profesional = 0;
 	visible = 0;
+	tema = '';
 
 	add() {
 
@@ -47,6 +49,40 @@ class SeminarioLive {
 	getByCode() {
 		return new Promise((resolve, reject) => {
 			let sql = 'SELECT * FROM seminarios_live WHERE codigo = ?';
+			con.query(sql, this.codigo, (err, response) => {
+				if(err) {
+					reject(err);
+				}
+
+				resolve(response);
+			});
+		});
+	}
+
+	addTema() {
+
+	}
+
+	editTema() {
+
+	}
+
+	getAllTemas() {
+		return new Promise((resolve, reject) => {
+			let sql = 'SELECT * FROM temas_seminarios_live';
+			con.query(sql, (err, response) => {
+				if(err) {
+					reject(err);
+				}
+
+				resolve(response);
+			})
+		});
+	}
+
+	getTemasByCodigo() {
+		return new Promise((resolve, reject) => {
+			let sql = 'SELECT * FROM temas_seminarios_live WHERE seminario_codigo = ?';
 			con.query(sql, this.codigo, (err, response) => {
 				if(err) {
 					reject(err);

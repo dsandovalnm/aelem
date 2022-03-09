@@ -61,6 +61,32 @@ class Article {
 			});
 		});
 	}
+
+	getByTitle() {
+		return new Promise((resolve, reject) => {
+			let sql = 'SELECT articulos.id AS id_articulo, articulos.codigo, articulos.titulo AS titulo_articulo, articulos.sub_titulo, articulos.descripcion AS articulo_descripcion, articulos.contenido, articulos.imagen AS imagen_articulo, articulos.profesional, profesionales.id AS id_profesional, profesionales.nombre, profesionales.apellido, profesionales.profesion, profesionales.titulo AS titulo_profesional, profesionales.descripcion AS profesional_descripcion, profesionales.imagen AS imagen_profesional FROM articulos,profesionales WHERE articulos.profesional = profesionales.id AND articulos.titulo LIKE ?';
+			con.query(sql, [`%${this.titulo}%`], (err, response) => {
+				if(err) {
+					reject(err);
+				}
+
+				resolve(response);
+			});
+		});
+	}
+
+	getByProfesional() {
+		return new Promise((resolve, reject) => {
+			let sql = 'SELECT articulos.id AS id_articulo, articulos.codigo, articulos.titulo AS titulo_articulo, articulos.sub_titulo, articulos.descripcion AS articulo_descripcion, articulos.contenido, articulos.imagen AS imagen_articulo, articulos.profesional, profesionales.id AS id_profesional, profesionales.nombre, profesionales.apellido, profesionales.profesion, profesionales.titulo AS titulo_profesional, profesionales.descripcion AS profesional_descripcion, profesionales.imagen AS imagen_profesional FROM articulos,profesionales WHERE articulos.profesional = profesionales.id AND articulos.profesional = ?';
+			con.query(sql, this.profesional, (err, response) => {
+				if(err) {
+					reject(err);
+				}
+
+				resolve(response);
+			});
+		});
+	}
 }
 
 module.exports = Article;

@@ -62,13 +62,14 @@
 		border-bottom: 2px solid #fff;
 	}
 
+	.nav-item,
 	.nav-item.dropdown {
 		position: relative;
 	}
-		.nav-item.dropdown .badge {
+		.nav-item .badge {
 			position: absolute;
-			top: -3px;
-			right: 1px;
+			top: -5px;
+			right: -2px;
 			border-radius: 50%;
 			width: 20px;
 			height: 20px;

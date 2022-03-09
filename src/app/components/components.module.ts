@@ -1,6 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
+import { ToastrModule } from 'ngx-toastr';
 import { SwiperModule } from 'swiper/angular';
 import { PipesModule } from '../pipes/pipes.module';
 import { CursosSeminariosContentComponent } from './cursos-seminarios-content/cursos-seminarios-content.component';
@@ -25,7 +28,10 @@ import { SpinnerComponent } from './spinner/spinner.component';
     CommonModule,
     RouterModule,
     SwiperModule,
-    PipesModule
+    PipesModule,
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot()
   ],
   exports: [
     NavbarComponent,

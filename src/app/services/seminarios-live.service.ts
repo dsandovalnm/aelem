@@ -18,4 +18,12 @@ export class SeminariosLiveService {
   getByCode(codigo: number): Observable<any> {
     return this._http.get(`${environment.API_URL}seminarios_live/${codigo}`);
   }
+  /* Traer todos los temas */
+  getAllTemas(): Observable<any> {
+    return this._http.get(`${environment.API_URL}seminarios_live/temas`);
+  }
+  /* Traer temas de un Seminario */
+  getTemasByCodigo(codigo: number) :Observable<any> {
+    return this._http.get(`${environment.API_URL}seminarios_live/temas/${codigo}`);
+  }
 }

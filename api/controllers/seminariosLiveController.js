@@ -55,3 +55,49 @@ exports.getByCode = (req, res) => {
 			});
 		});
 }
+
+exports.addTema = (req, res) => {
+
+}
+
+exports.getAllTemas = (req, res) => {
+	promiseRes = seminarioLive.getAllTemas();
+
+	promiseRes
+		.then(response => {
+			res.json({
+				status: true,
+				message: 'Get All Seminarios Temas',
+				response
+			});
+		})
+		.catch(error => {
+			res.json({
+				status: false,
+				message: 'Hubo un error en la consulta',
+				error
+			});
+		});
+}
+
+exports.getTemasByCodigo = (req, res) => {
+	seminarioLive.codigo = req.params.codigo;
+
+	promiseRes = seminarioLive.getTemasByCodigo();
+
+	promiseRes
+		.then(response => {
+			res.json({
+				status: true,
+				message: 'Get Temas Seminario Live',
+				response
+			});
+		})
+		.catch(error => {
+			res.json({
+				status: false,
+				message: 'Hubo un error en la consulta',
+				error
+			});
+		});
+}

@@ -9,7 +9,7 @@
 		flex-direction: column;
 		justify-content: space-between;
 		align-items: center;
-		flex: calc(33.3% - 1rem);
+		flex: 0 calc(33.3% - 1rem);
 	}
 
 .article-info {

@@ -79,3 +79,51 @@ exports.getByCode = (req, res) => {
 			});
 		})
 }
+
+exports.getByTitle = (req, res) => {
+	article.titulo = req.params.titulo;
+
+	promiseRes = article.getByTitle();
+
+	promiseRes
+		.then(response => {
+			res.json({
+				status: true,
+				message: 'Get Articles By Titulo',
+				response
+			});
+		})
+		.catch(error => {
+			res.json({
+				status: false,
+				message: 'Hubo un error en la consulta',
+				error
+			});
+		});
+}
+
+exports.getByProfesionalId = (req, res) => {
+	article.profesional = req.params.profesionalId;
+
+	promiseRes = article.getByProfesional();
+
+	promiseRes
+		.then(response => {
+			res.json({
+				status: true,
+				message: 'Get Articles By Profesional',
+				response
+			});
+		})
+		.catch(error => {
+			res.json({
+				status: false,
+				message: 'Hubo un error en la consulta',
+				error
+			});
+		});
+}
+
+exports.getByTitleProf = (req, res) => {
+	console.log(req.params);
+}
