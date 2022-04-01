@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 import { ToastrModule } from 'ngx-toastr';
@@ -12,7 +12,9 @@ import { HeaderComponent } from './header/header.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { PaginationComponent } from './pagination/pagination.component';
 import { PreLoaderComponent } from './pre-loader/pre-loader.component';
+import { SidebarPlataformaComponent } from './sidebar-plataforma/sidebar-plataforma.component';
 import { SpinnerComponent } from './spinner/spinner.component';
+import { TopbarPlataformaComponent } from './topbar-plataforma/topbar-plataforma.component';
 
 @NgModule({
   declarations: [
@@ -22,13 +24,16 @@ import { SpinnerComponent } from './spinner/spinner.component';
     PreLoaderComponent,
     CursosSeminariosContentComponent,
     SpinnerComponent,
-    PaginationComponent
+    PaginationComponent,
+    TopbarPlataformaComponent,
+    SidebarPlataformaComponent
   ],
   imports: [
     CommonModule,
     RouterModule,
     SwiperModule,
     PipesModule,
+    FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot()
@@ -40,7 +45,9 @@ import { SpinnerComponent } from './spinner/spinner.component';
     PreLoaderComponent,
     CursosSeminariosContentComponent,
     SpinnerComponent,
-    PaginationComponent
+    PaginationComponent,
+    TopbarPlataformaComponent,
+    SidebarPlataformaComponent
   ]
 })
 export class ComponentsModule { }

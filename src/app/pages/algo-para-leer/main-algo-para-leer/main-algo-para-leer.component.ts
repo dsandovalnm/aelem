@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 import { ArticuloLeer } from 'src/app/interfaces/articleLeer';
 import { ArticuloLeerService } from 'src/app/services/articulo-leer.service';
 
@@ -9,11 +11,19 @@ import { ArticuloLeerService } from 'src/app/services/articulo-leer.service';
 })
 export class MainAlgoParaLeerComponent implements OnInit {
 
+  articulosLeerForm: FormGroup;
   articulosLeer: ArticuloLeer[] = [];
   articlesFiltered: ArticuloLeer[] = [];
   results = 6;
 
-  constructor(  private _ArtiulosLeerService: ArticuloLeerService) { }
+  constructor(  private _ArtiulosLeerService: ArticuloLeerService,
+                private _ToastrService: ToastrService,
+                private _FormBuiler: FormBuilder) {
+    
+    this.articulosLeerForm = this._FormBuiler.group({
+      titulo: ['', Validators.required]
+    });
+  }
 
   async ngOnInit() {
     await this.getArticulosLeer();
@@ -39,6 +49,43 @@ export class MainAlgoParaLeerComponent implements OnInit {
 
     let result = await articulosLeerP;
     return result;
+  }
+
+  async searchArticles() {
+    if(this.articulosLeerForm.invalid) {
+      this._ToastrService.error('Debe ingresar un criterio de búsqueda', 'NO EXISTEN CRITERIOS DE BÚSQUEDA');
+      return;
+    }
+
+    this.articulosLeer = [];
+
+    let articlesLeerP = new Promise((resolve, reject) => {
+      let titulo = this.articulosLeerForm.value.titulo;
+      this._ArtiulosLeerService.getByTitle(titulo)
+        .subscribe(async articulos => {
+          if(!articulos.status) {
+            reject(articulos);
+          }
+
+          if(articulos.response.length == 0) {
+            this._ToastrService.error('No se encontraron artículos por este término', 'SE ENCONTRARON 0 RESULTADOS');
+            await this.getArticulosLeer();
+          }else {
+            this._ToastrService.success(`Hemos filtrado los resultados con los siguientes artículos:`, `SE ENCONTRARON ${articulos.response.length} RESULTADOS`);
+            articulos.response.map((articulo: ArticuloLeer) => this.articulosLeer.unshift(articulo));
+          }
+
+          this.articulosLeerForm.patchValue({titulo: ''});
+          resolve(articulos.status);
+        });
+    });
+
+    let result = await articlesLeerP;
+    return result;
+  }
+
+  clearArticles() {
+    
   }
 
   filterArticulosLeer(page: any) {

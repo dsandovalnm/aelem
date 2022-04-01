@@ -1,0 +1,18 @@
+.descarga-content {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+}
+	.descarga-content .imagen-descarga,
+	.descarga-content .formulario {
+		padding: 1rem;
+	}
+		.descarga-content .formulario .form-group {
+			padding: .3rem;
+		}
+
+		.descarga-content .formulario .form-group .invalidField {
+			border: 1px solid var(--danger-color);
+			box-shadow: none;
+		}

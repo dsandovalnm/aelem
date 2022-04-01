@@ -15,7 +15,7 @@ class VideoPandemia {
 
 	getAll() {
 		return new Promise((resolve, reject) => {
-			let sql = 'SELECT * FROM videos_cuarentena';
+			let sql = 'SELECT * FROM cuarentena_videos';
 			con.query(sql, (err, response) => {
 				if(err) {
 					reject(err);
@@ -28,7 +28,7 @@ class VideoPandemia {
 
 	getLastN(amount) {
 		return new Promise((resolve, reject) => {
-			let sql = 'SELECT * FROM videos_cuarentena ORDER BY id DESC LIMIT ?';
+			let sql = 'SELECT * FROM cuarentena_videos ORDER BY id DESC LIMIT ?';
 			con.query(sql, amount, (err, response) => {
 				if(err) {
 					reject(err);

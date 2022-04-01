@@ -5,11 +5,16 @@
 
 <section class="section-algo-para-leer">
 	<div class="search-box container my-4">
-		<form id="request-form" class="request-form">
+		<form class="request-form" [formGroup]="articulosLeerForm" (ngSubmit)="searchArticles()">
 			<div class="input-group">
-				<input type="hidden" id="data-tb" name="data-tb" value="articulos">
-				<input id="search-argument" name="search-argument" type="text" class="form-control" autocomplete="off" placeholder="Qué quiere buscar?">
-				<button type="submit" id="search-art-btn" class="fas fa-search search-icon"></button>
+				<input	type="text"
+							class="form-control"
+							autocomplete="off"
+							placeholder="Qué quiere buscar?"
+							formControlName="titulo">
+
+				<button type="submit" class="btn fa-solid fa-magnifying-glass"></button>
+				<button type="button" class="btn fa-solid fa-rotate-left" (click)="clearArticles()"></button>
 			</div>
 		</form>
 	</div>

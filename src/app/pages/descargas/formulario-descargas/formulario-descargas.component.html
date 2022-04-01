@@ -1,0 +1,60 @@
+<section class="section-formulario-descargas">
+	<h5 class="title text-center">Formulario Descarga</h5>
+	<div class="descarga-content">
+		<div class="head col-12">
+			<h6 class="title text-center">Campaña Solidaria de Ayuda Emocional</h6>
+		</div>
+		<div class="imagen-descarga col-12 col-sm-5">
+			<img [src]="'assets/img/descargas/'+descarga.imagen" alt="Imagen Descarga">
+		</div>
+		<div class="formulario col-12 col-sm-7 py-3 text-center">
+			<h6 class="text-center">Completa los datos para descargar de forma gratuita</h6>
+			<h6><strong> "{{ descarga.nombre_descarga }}" </strong></h6>
+			<form [formGroup]="addDescargaForm" (ngSubmit)="addDescarga()">
+				<input type="hidden" formControlName="nombre_descarga" [value]="descarga.nombre_descarga">
+				<input type="hidden" formControlName="categoria" [value]="descarga.categoria">
+				<div class="form-group d-flex justify-content-between align-items-center gap-3">
+					<input	type="text"
+								class="form-control text-center"
+								placeholder="Nombres"
+								formControlName="nombre">
+				</div>
+				<div class="form-group d-flex justify-content-between align-items-center gap-3">
+					<input	type="text"
+								class="form-control text-center"
+								placeholder="Apellidos"
+								formControlName="apellido">
+				</div>
+				<div class="form-group d-flex justify-content-between align-items-center gap-3">
+					<select	class="form-control text-center scroller"
+								formControlName="pais">
+						<option value="" selected disabled>País de Residencia</option>
+						<option	*ngFor="let country of countries" style="text-transform: capitalize;" [value]="country.name"> {{ country.name }} </option>
+					</select>
+				</div>
+				<div class="form-group d-flex justify-content-between align-items-center gap-3">
+					<input	type="text"
+								class="form-control text-center"
+								placeholder="Teléfono"
+								formControlName="numero_telefono">
+				</div>
+				<div class="form-group d-flex justify-content-between align-items-center gap-3">
+					<input	type="text"
+								class="form-control text-center"
+								placeholder="Email"
+								formControlName="email">
+				</div>
+				<div class="form-group">
+					<button type="submit" class="btn btn-primary btn-block">Descargar</button>
+				</div>
+			</form>
+
+			<div *ngIf="downloads.length < 1; else showDownloads;" class="spinner-border text-info m-3" role="status">
+				<span class="visually-hidden">Loading...</span>
+			</div>
+			<ng-template #showDownloads>
+				<p> Número total de descargas:  <strong> {{ downloads.length }} </strong> </p>
+			</ng-template>
+		</div>
+	</div>
+</section>

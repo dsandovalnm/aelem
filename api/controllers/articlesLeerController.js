@@ -55,3 +55,25 @@ exports.getAll = (req, res) => {
 			});
 		});
 }
+
+exports.getBytitle = (req, res) => {
+	articleLeer.titulo = req.params.titulo;
+
+	promiseRes = articleLeer.getByTitle();
+
+	promiseRes
+		.then(response => {
+			res.json({
+				status: true,
+				message: 'Get Articles by Titulo',
+				response
+			});
+		})
+		.catch(error => {
+			res.json({
+				status: true,
+				message: 'Hubo un error en la consulta',
+				error
+			});
+		});
+}

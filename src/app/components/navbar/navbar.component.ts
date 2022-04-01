@@ -1,5 +1,7 @@
 import { Component, HostListener, OnInit } from '@angular/core';
+import { cartItem } from 'src/app/interfaces/cartItem';
 import { SeminarioLive } from 'src/app/interfaces/seminarioLive';
+import { CartService } from 'src/app/services/cart.service';
 import { SeminariosLiveService } from 'src/app/services/seminarios-live.service';
 
 @Component({
@@ -10,6 +12,7 @@ import { SeminariosLiveService } from 'src/app/services/seminarios-live.service'
 export class NavbarComponent implements OnInit {
 
   fixed: boolean = false;
+  cartItems: cartItem[] = [];
   seminariosLive: SeminarioLive[] = [];
   seminariosLiveOn: SeminarioLive[] = [];
 
@@ -24,12 +27,14 @@ export class NavbarComponent implements OnInit {
       }
     }
 
-  constructor(  private _SeminariosLiveService: SeminariosLiveService) { }
+  constructor(  private _SeminariosLiveService: SeminariosLiveService,
+                private _CartService: CartService) { }
 
   async ngOnInit() {
     await this.getSeminariosLive();
 
     this.seminariosLiveOn = this.seminariosLive.filter(seminario => seminario.visible == 1);
+    this.cartItems = this._CartService.getItems();
   }
 
   async getSeminariosLive() {

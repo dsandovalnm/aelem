@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Categoria } from 'src/app/interfaces/descargas';
-import { CategoriasService } from 'src/app/services/categorias.service';
+import { CategoriasDescargasService } from 'src/app/services/categorias-descargas.service';
 
 @Component({
   selector: 'app-descargas',
@@ -11,7 +11,7 @@ export class DescargasComponent implements OnInit {
 
   categorias: Categoria[] = [];
 
-  constructor(  private _CategoriasService: CategoriasService) { }
+  constructor(  private _CategoriasDescargasService: CategoriasDescargasService) { }
 
   async ngOnInit() {
     await this.getCategorias();
@@ -19,7 +19,7 @@ export class DescargasComponent implements OnInit {
 
   async getCategorias() {
     let categoriasP = new Promise((resolve, reject) => {
-      this._CategoriasService.getAll()
+      this._CategoriasDescargasService.getAll()
         .subscribe(categorias => {
           if(!categorias.status) {
             reject(categorias);

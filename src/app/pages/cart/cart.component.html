@@ -1,0 +1,51 @@
+	<app-navbar></app-navbar>
+
+	<section class="section-cart py-5">
+		<h4 class="title text-center">Carrito de Compra</h4>
+		<div class="cart-container">
+			<div class="table-cart scroller">
+				<table *ngIf="cartItems.length > 0;else emptyCart;" class="table">
+					<thead class="thead-dark">
+						<tr>
+							<th>Nombre</th>
+							<th>Cantidad</th>
+							<th>Precio</th>
+							<th>Eliminar</th>
+						</tr>
+					</thead>
+						<tbody>
+							<tr *ngFor="let item of cartItems">
+								<td> {{ item.name }} </td>
+								<td> {{ item.quantity }} </td>
+								<td> {{ item.price }} </td>
+								<td class="delete-icon"> 
+									<i class="fa-solid fa-trash-can" (click)="deleteItem(item.code)"></i>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="2"></td>
+								<td>
+									<p class="title">Total</p>
+								</td>
+								<td>
+									<p class="title"> {{ total }} {{ location.countryname != 'Argentina' ? 'USD' : 'ARS' }} </p>
+								</td>
+							</tr>
+						</tbody>
+				</table>
+			</div>
+			<div *ngIf="cartItems.length > 0" class="continue-button text-center">
+				<button type="button" class="btn btn-info m-2" [routerLink]="['/cursos']">Agregar Otro</button>
+				<button type="submit" class="btn btn-primary m-2" (click)="goPayment()">Continuar</button>
+			</div>
+			<ng-template #emptyCart>
+				<div class="empty-cart py-5">
+					<img src="assets/img/cart/empty-cart.png" alt="Empty Cart Icon">
+					<h6 class="py-5">No hay ítem agregados al carrito, haz click aquí para agregar</h6>
+					<button [routerLink]="['/cursos']" class="btn btn-primary">Agregar un artículo</button>
+				</div>
+			</ng-template>
+		</div>
+	</section>
+
+<app-footer></app-footer>

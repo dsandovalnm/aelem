@@ -1,4 +1,4 @@
-const Categoria = require('../models/Categoria');
+const Categoria = require('../models/CategoriaDescarga');
 let categoria = new Categoria();
 let promiseRes;
 

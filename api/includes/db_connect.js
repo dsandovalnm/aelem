@@ -4,7 +4,7 @@ let db = mysql.createPool({
 	host: '72.167.53.65',
 	user: 'aelemadmindb',
 	password: 'Xo!QJ0yzc6jt3&f',
-	database: 'aelem'
+	database: 'aelemadmindb'
 });
 
 db.getConnection((err, con) => {

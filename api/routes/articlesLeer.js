@@ -1,8 +1,9 @@
 const express = require('express');
 const router = express.Router();
-const ArticlesLeerController = require('../controllers/articlesLeerController');
+const articlesLeerController = require('../controllers/articlesLeerController');
 
-router.get('/', ArticlesLeerController.getAll);
-router.get('/:codigo', ArticlesLeerController.getByCode);
+router.get('/', articlesLeerController.getAll);
+router.get('/:codigo', articlesLeerController.getByCode);
+router.get('/titulo/:titulo', articlesLeerController.getBytitle);
 
 module.exports = router;

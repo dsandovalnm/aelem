@@ -1,0 +1,71 @@
+.contenido-audiovisual .content {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+}
+
+	.swiper-cuarentena-videos {
+		padding: 0 80px;
+	}
+	@media screen and (max-width: 768px) {
+		.swiper-cuarentena-videos {
+			padding: 1rem .2rem;
+		}
+	}
+
+	/* Articulos */
+	.section-articulos {
+		background-color: #f1f1f1;
+		padding-top: 2rem;
+		padding-bottom: 2rem;
+	}
+		.art-content {
+			position: relative;
+			height: 100%;
+			background-color: #fff;
+			border-radius: 15px;
+			padding: 10px;
+		}
+
+			.art-content.box {
+				height: 460px;
+			}
+
+		.content-articulo {
+			text-align: justify;
+		}
+	
+		/* Zocalo Libro */
+		.section-libro {
+			padding: 0;
+		}
+
+		.bubble-btn {
+			margin:0 auto;
+			background-color: rgba(17, 94, 152, 0.748);
+			background-image:-webkit-gradient(linear,0% 0%,0% 90%,from(rgba(118, 227, 251, 0.8)),to(rgba(17, 94, 152, 0.748)));
+			background-image:-moz-linear-gradient(rgba(118, 227, 251, 0.8) 0%,rgba(17, 94, 152, 0.748) 90%);
+			width:100%;
+			height:45px;
+			-webkit-border-radius:16px;
+			-moz-border-radius:16px;
+			border-radius:16px;
+			border:2px solid #CCC;
+			border-color:#8BA2C1 #5890BF #4F93CA #768FA5; 
+			font-size: 20px;
+			-webkit-box-shadow:rgba(66,140,240,0.5) 0px 10px 16px;
+			-moz-box-shadow:rgba(66,140,240,0.5) 0px 10px 16px;
+			box-shadow:rgba(66,140,240,0.5) 0px 10px 16px;
+			color:#FFF;
+			transition: all .3s ease-in-out;
+			font-size: 1rem;
+		}
+
+			.bubble-btn:hover {
+			font-size: 20px;
+			color: #e1e1e1;
+			-webkit-box-shadow:rgba(31, 165, 223, 0.5) 0px 0px 12px 9px;
+			-moz-box-shadow:rgba(31, 165, 223, 0.5) 0px 0px 12px 9px;
+			box-shadow:rgba(31, 165, 223, 0.5) 0px 0px 12px 9px;
+		}

@@ -6,13 +6,21 @@ import { VerAlgoParaLeerComponent } from './pages/algo-para-leer/ver-algo-para-l
 import { ArticulosComponent } from './pages/articulos/articulos.component';
 import { MainArticulosComponent } from './pages/articulos/main-articulos/main-articulos.component';
 import { VerArticuloComponent } from './pages/articulos/ver-articulo/ver-articulo.component';
+import { CartComponent } from './pages/cart/cart.component';
 import { CursosComponent } from './pages/cursos/cursos.component';
-import { CategoriaDescargasComponent } from './pages/descargas/categoria-descargas/categoria-descargas.component';
+import { CategoriasDescargasComponent } from './pages/descargas/categoria-descargas/categoria-descargas.component';
 import { DescargasComponent } from './pages/descargas/descargas.component';
+import { FormularioDescargasComponent } from './pages/descargas/formulario-descargas/formulario-descargas.component';
 import { HomeComponent } from './pages/home/home.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
+import { MainPandemiaComponent } from './pages/pandemia/main-pandemia/main-pandemia.component';
 import { PandemiaComponent } from './pages/pandemia/pandemia.component';
+import { VerArticuloPandemiaComponent } from './pages/pandemia/ver-articulo-pandemia/ver-articulo-pandemia.component';
+import { PaymentComponent } from './pages/payment/payment.component';
+import { LoginPlataformaComponent } from './pages/plataforma/login-plataforma/login-plataforma.component';
+import { MainPlataformaComponent } from './pages/plataforma/main-plataforma/main-plataforma.component';
 import { PlataformaComponent } from './pages/plataforma/plataforma.component';
+import { RegistroPlataformaComponent } from './pages/plataforma/registro-plataforma/registro-plataforma.component';
 import { InfoSeminarioLiveComponent } from './pages/seminario-live/info-seminario-live/info-seminario-live.component';
 import { NoCodeSeminarioLiveComponent } from './pages/seminario-live/no-code-seminario-live/no-code-seminario-live.component';
 import { PreciosSeminarioLiveComponent } from './pages/seminario-live/precios-seminario-live/precios-seminario-live.component';
@@ -33,7 +41,12 @@ const routes: Routes = [
       { path: 'precios/:codigo', component: PreciosSeminarioLiveComponent },
     ]
   },
-  { path: 'pandemia', component: PandemiaComponent },
+  { path: 'pandemia', component: PandemiaComponent,
+    children: [
+      { path: '', component: MainPandemiaComponent },
+      { path: 'articulo/:codigo', component: VerArticuloPandemiaComponent }
+    ]
+  },
   { path: 'cursos', component: CursosComponent },
   { path: 'articulos', component: ArticulosComponent,
     children: [
@@ -52,11 +65,25 @@ const routes: Routes = [
       { path: 'page/:page', component: MainAlgoParaLeerComponent },
     ]
   },
-  { path: 'plataforma', component: PlataformaComponent },
+  { path: 'pagar', component: PaymentComponent,
+    children: [
+      { path: '', component: PaymentComponent }
+    ]
+  },
+  { path: 'carrito', component: CartComponent },
+  { path: 'plataforma', component: PlataformaComponent,
+    children: [
+      { path: '', component: MainPlataformaComponent },
+      { path: 'home', component: MainPlataformaComponent },
+      { path: 'login', component: LoginPlataformaComponent },
+      { path: 'registro', component: RegistroPlataformaComponent }
+    ]
+  },
   { path: 'descargas', component: DescargasComponent,
     children: [
       { path: '', redirectTo: '/descargas/all', pathMatch: 'full' },
-      { path: ':categoria', component: CategoriaDescargasComponent }
+      { path: 'formulario/:codigo', component: FormularioDescargasComponent },
+      { path: ':categoria', component: CategoriasDescargasComponent }
     ]  
   },
   { path: '**', component: PageNotFoundComponent }

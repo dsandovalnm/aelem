@@ -56,3 +56,25 @@ exports.getLastN = (req, res) => {
 			});
 		});
 }
+
+exports.getByCode = (req, res) => {
+	articlePandemia.codigo = req.params.codigo;
+
+	promiseRes = articlePandemia.getByCode();
+
+	promiseRes
+		.then(response => {
+			res.json({
+				status: true,
+				message: 'Get Article Pandemia By Codigo',
+				response
+			});
+		})
+		.catch(error => {
+			res.json({
+				status: false,
+				message: 'Hubo un error en la consulta',
+				error
+			});
+		});
+}

@@ -1,0 +1,48 @@
+.topbar {
+	display: flex;
+	justify-content: space-between;
+	height: 100%;
+	align-items: center;
+	padding: 0 1rem;
+}
+	.topbar .logo {
+		width: 120px;
+	}
+	.topbar .options {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+		.options .opt {
+			width: 2.5rem;
+			height: 2.5rem;
+			margin: .2rem;
+			padding: 1rem;
+			border-radius: 50%;
+			border: 1px solid #fff;
+			background-color: transparent;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			cursor: pointer;
+			transition: all .2s ease-in-out;
+		}
+
+		.options .opt:hover {
+			background-color: #fff;
+		}
+			.opt i {
+				transition: all .2s ease-in-out;
+				font-size: 1rem;
+				color: #fff;
+			}
+			.options .opt:hover i {
+				color: var(--main-color);
+			}
+
+			.active {
+				background-color: #fff!important;
+			}
+			.opt.active i {
+				color: var(--main-color)!important;
+			}

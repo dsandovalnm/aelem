@@ -1,0 +1,14 @@
+<section class="main-plataforma-section" [ngClass]="{'collapsed':collapsed}">
+	<div class="topbar">
+		<app-topbar-plataforma></app-topbar-plataforma>
+	</div>
+	<div class="sidebar">
+		<div class="collapse-icon" [ngClass]="{'collapsed':collapsed}" (click)="toggleSideBar()">
+			<i class="fa-solid fa-angles-left"></i>
+		</div>
+		<app-sidebar-plataforma [collapsed]="collapsed"></app-sidebar-plataforma>
+	</div>
+	<div class="content">
+		<router-outlet></router-outlet>
+	</div>
+</section>

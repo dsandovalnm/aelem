@@ -14,9 +14,12 @@ export class ArticuloLeerService {
   getAll(): Observable<any> {
     return this._http.get(`${environment.API_URL}articulosleer`);
   }
-
   /* Traer un Articulo por Código */
   getByCode(codigo: number): Observable<any> {
     return this._http.get(`${environment.API_URL}articulosleer/${codigo}`);
+  }
+  /* Traer un articulo por titulo */
+  getByTitle(title: string): Observable<any> {
+    return this._http.get(`${environment.API_URL}articulosleer/titulo/${title}`);
   }
 }

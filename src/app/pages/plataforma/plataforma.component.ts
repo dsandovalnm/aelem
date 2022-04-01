@@ -9,6 +9,8 @@ export class PlataformaComponent implements OnInit {
 
   constructor() { }
 
+  auth:boolean = false;
+
   ngOnInit(): void {
   }
 

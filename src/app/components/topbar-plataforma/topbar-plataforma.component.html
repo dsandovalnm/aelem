@@ -1,0 +1,22 @@
+<nav class="topbar">
+	<div class="logo">
+		<img src="assets/img/logos/logo_texto_blanco.png" alt="Logo Aelem">
+	</div>
+	<div class="options">
+		<div class="opt" [routerLink]="['/']">
+			<i class="fa-solid fa-globe"></i>
+		</div>
+		<div class="opt" [routerLink]="['/plataforma/home']" routerLinkActive="active">
+			<i class="fa-solid fa-house-chimney"></i>
+		</div>
+		<div class="opt" [routerLink]="['/plataforma/miperfil']" routerLinkActive="active">
+			<i class="fa-solid fa-user"></i>
+		</div>
+		<div class="opt" [routerLink]="['/plataforma/configuracion']" routerLinkActive="active">
+			<i class="fa-solid fa-gear"></i>
+		</div>
+		<div class="opt" (click)="logout()">
+			<i class="fa-solid fa-arrow-right-from-bracket"></i>
+		</div>
+	</div>
+</nav>

@@ -1,0 +1,40 @@
+
+.table-cart {
+	max-width: 100%;
+	overflow-x: scroll;
+}
+table tr td,
+table tr th {
+	vertical-align: middle;
+}
+
+table tr th {
+	text-transform: uppercase;
+}
+
+
+	table tbody .delete-icon i {
+		cursor: pointer;
+		transition: all .2s ease-in-out;
+	}
+
+	table tbody .delete-icon i:hover {
+		color: var(--danger-color);
+	}
+
+.empty-cart {
+	text-align: center;
+}
+@media screen and (max-width: 768px) {
+	.empty-cart {
+		padding: 0 1rem;
+	}
+}
+	.empty-cart img {
+		max-width: 150px;
+	}
+	@media screen and (max-width: 768px) {
+		.empty-cart img {
+			max-width: 100px;
+		}
+	}

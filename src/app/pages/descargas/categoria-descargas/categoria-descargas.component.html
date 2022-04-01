@@ -10,7 +10,7 @@
 				<span class="descarga_label"> {{ descarga.nombre_categoria }} </span>
 			</div>
 			<div class="footer-card">
-				<button class="btn btn-descargas btn-block w-100">
+				<button type="button" [routerLink]="['/descargas/formulario', descarga.codigo_descarga]" class="btn btn-descargas btn-block w-100">
 					<i class="fa-solid fa-download"></i>
 					Descargar
 				</button>

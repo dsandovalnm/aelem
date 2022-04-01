@@ -110,22 +110,6 @@
 			}
 		}
 	/* Precios */
-	.content-precio .precios {
-			padding-top: 2rem;
-			padding-bottom: 2rem;
-	}
-
-	.precio .precio-box {
-		width: 50%;
-		border: 2px solid var(--main-color);
-		margin: 15px auto;
-	}
-	@media screen and (max-width: 768px) {
-		.section-precio .precio-box {
-			width: 100%;
-			text-align: center;
-		}
-	}
 	.section-precio .precio-box .head-precio {
 		background-color: var(--main-color);
 		padding: 7px;
@@ -138,16 +122,42 @@
 		flex-wrap: wrap;
 		padding: 10px;
 	}
-
-		.section-precio .precio-box .content-precio .beneficios .perk {
-			display: flex;
-			justify-content: flex-start;
-			align-items: center;
+		.content-precio .beneficios {
+			padding: 1rem;
 		}
-			.section-precio .precio-box .content-precio .beneficios .perk .icon {
-			color: #5da75d;
+			.content-precio .beneficios .perk {
+				display: flex;
+				justify-content: flex-start;
+				align-items: center;
 			}
+				.content-precio .beneficios .perk .icon {
+					color: #5da75d;
+				}
 
-		.section-precio .precio-box .content-precio .precios .title {
-			margin: 0;
+		.content-precio .precios {
+			padding-top: 2rem;
+			padding-bottom: 2rem;
+			display: grid;
+			gap: 1rem;
+			text-align: center;
+			grid-template-columns: 1fr 1fr;
+			grid-template-rows: auto;
 		}
+		@media screen and (max-width: 768px) {
+			.content-precio .precios {
+				grid-template-columns: 1fr;
+			}
+		}
+
+			.content-precio .precios .precio-box {
+				border: 2px solid var(--main-color);
+				padding: .6rem;
+				border-radius: 5px;
+			}
+				.content-precio .precios .precio-box .precio {
+					display: flex;
+					flex-direction: column;
+					justify-content: space-between;
+					align-items: center;
+					height: 100%;
+				}

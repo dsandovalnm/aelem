@@ -5,5 +5,5 @@
 }
 	.card {
 		height: fit-content;
-		flex: 1 calc(33.3% - 1rem);
+		flex: 0 calc(33.3% - 1rem);
 	}

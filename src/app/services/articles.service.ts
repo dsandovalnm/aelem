@@ -22,4 +22,12 @@ export class ArticlesService {
   getByCode(code: number): Observable<any> {
     return this._http.get(`${environment.API_URL}articulos/${code}`);
   }
+    /* Traer articulos por titulo */
+  getByTitle(titulo: string): Observable<any> {
+    return this._http.get(`${environment.API_URL}articulos/titulo/${titulo}`);
+  }
+    /* Traer articulos por profesional */
+  getByProfesional(profesionalId: number): Observable<any> {
+    return this._http.get(`${environment.API_URL}articulos/profesional/${profesionalId}`)
+  }
 }

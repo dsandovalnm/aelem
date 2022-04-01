@@ -9,6 +9,12 @@
 	--second-color: #007bff;
 	--third-color: #212121;
 	--main-font: "Poppins", sans-serif;
+
+	--primary-color:  #0275d8;
+	--success-color:  #5cb85c;
+	--info-color:  #5bc0de;
+	--warning-color:  #f0ad4e;
+	--danger-color:  #d9534f;
 }
 
 /* :: Base CSS */

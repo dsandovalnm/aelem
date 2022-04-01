@@ -6,7 +6,6 @@ import { ArticleProfesional } from 'src/app/interfaces/article';
 import { Profesional } from 'src/app/interfaces/profesional';
 import { ArticlesService } from 'src/app/services/articles.service';
 import { ProfesionalesService } from 'src/app/services/profesionales.service';
-import { SearchService } from 'src/app/services/search.service';
 
 @Component({
   selector: 'app-main-articulos',
@@ -24,7 +23,6 @@ export class MainArticulosComponent implements OnInit {
   constructor(  private _ArticlesServices: ArticlesService,
                 private _ProfesionalesService: ProfesionalesService,
                 private _FormBuiler: FormBuilder,
-                private _SearchService: SearchService,
                 private _ToastrService: ToastrService) {
 
     AOS.init();
@@ -64,7 +62,7 @@ export class MainArticulosComponent implements OnInit {
     /* Buscar por profesional */
     if(titulo == '' && profesionalId != '') {
       let articlesP = new Promise((resolve, reject) => {
-        this._SearchService.searchById(profesionalId, `articulos/profesional`)
+        this._ArticlesServices.getByProfesional(profesionalId)
           .subscribe(async articles => {
             if(!articles.status) {
               reject(articles);
@@ -90,7 +88,7 @@ export class MainArticulosComponent implements OnInit {
     /* Buscar por titulo */
     if(titulo != '' && profesionalId == '') {
       let articlesP = new Promise((resolve, reject) => {
-        this._SearchService.searchByTerm(titulo, `articulos/titulo`)
+        this._ArticlesServices.getByTitle(titulo)
           .subscribe(async articles => {
             if(!articles.status) {
               reject(articles);

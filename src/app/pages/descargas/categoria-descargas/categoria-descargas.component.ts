@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Categoria, DescargaCategoria } from 'src/app/interfaces/descargas';
-import { CategoriasService } from 'src/app/services/categorias.service';
+import { CategoriasDescargasService } from 'src/app/services/categorias-descargas.service';
 import { DescargasService } from 'src/app/services/descargas.service';
 
 @Component({
@@ -9,7 +9,7 @@ import { DescargasService } from 'src/app/services/descargas.service';
   templateUrl: './categoria-descargas.component.html',
   styleUrls: ['./categoria-descargas.component.css']
 })
-export class CategoriaDescargasComponent implements OnInit {
+export class CategoriasDescargasComponent implements OnInit {
 
   descargas: DescargaCategoria[] = [];
   descargasFiltered: DescargaCategoria[] = [];
@@ -17,7 +17,7 @@ export class CategoriaDescargasComponent implements OnInit {
   categoriaNombre: string = 'all';
 
   constructor(  private _DescargasService: DescargasService,
-                private _CategoriasService: CategoriasService,
+                private _CategoriasDescargasService: CategoriasDescargasService,
                 private _ActivatedRoute: ActivatedRoute) { }
 
   async ngOnInit() {
@@ -76,7 +76,7 @@ export class CategoriaDescargasComponent implements OnInit {
 
   async getCategoria(categoryName: string) {
     let categoriaP = new Promise((resolve, reject) => {
-      this._CategoriasService.getByName(categoryName)
+      this._CategoriasDescargasService.getByName(categoryName)
         .subscribe(category => {
           if(!category.status) {
             reject(category);

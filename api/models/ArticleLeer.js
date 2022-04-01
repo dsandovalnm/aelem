@@ -50,6 +50,19 @@ class ArticleLeer {
 			});
 		});
 	}
+
+	getByTitle() {
+		return new Promise((resolve, reject) => {
+			let sql = 'SELECT *, año as anio FROM articulos_leer WHERE titulo LIKE ?';
+			con.query(sql, [`%${this.titulo}%`], (err, response) => {
+				if(err) {
+					reject(err);
+				}
+
+				resolve(response);
+			});
+		});
+	}
 }
 
 module.exports = ArticleLeer;

@@ -37,7 +37,8 @@ export class HomeComponent implements OnInit, AfterContentInit {
   }
 
   ngAfterContentInit(): void {
-    const swiper = new Swiper('.swiper');
+    new Swiper('.swiper');
+    (<any>window)?.twttr?.widgets.load();
   }
 
   async getCharlasAbiertas() {

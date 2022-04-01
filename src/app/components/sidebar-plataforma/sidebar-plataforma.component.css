@@ -1,0 +1,12 @@
+
+	.user-info * {
+		font-size: .9rem;
+		color: #fff;
+	}
+		.user-info .user-data.collapsed {
+			display: none;
+		}
+
+	.user-image img {
+		width: 80px;
+	}

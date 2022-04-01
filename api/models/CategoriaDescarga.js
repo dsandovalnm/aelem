@@ -23,7 +23,7 @@ class Categoria {
 
 	getAll() {
 		return new Promise((resolve, reject) => {
-			let sql = 'SELECT * FROM categoria_descargas';
+			let sql = 'SELECT * FROM descargas_categorias';
 			con.query(sql, (err, response) => {
 				if(err) {
 					reject(err);
@@ -36,7 +36,7 @@ class Categoria {
 
 	getByName() {
 		return new Promise((resolve, reject) => {
-			let sql = 'SELECT * FROM categoria_descargas WHERE nombre = ?';
+			let sql = 'SELECT * FROM descargas_categorias WHERE nombre = ?';
 			con.query(sql, this.nombre, (err, response) => {
 				if(err) {
 					reject(err);

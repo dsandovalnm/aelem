@@ -1,0 +1,30 @@
+.table-details {
+	max-width: 60%;
+	overflow-x: scroll;
+	margin:0 auto;
+}
+	table tr td,
+	table tr th {
+		vertical-align: middle;
+	}
+
+	table tr th {
+		text-transform: uppercase;
+	}
+
+	.empty-cart {
+		text-align: center;
+	}
+	@media screen and (max-width: 768px) {
+		.empty-cart {
+			padding: 0 1rem;
+		}
+	}
+		.empty-cart img {
+			max-width: 150px;
+		}
+		@media screen and (max-width: 768px) {
+			.empty-cart img {
+				max-width: 100px;
+			}
+		}

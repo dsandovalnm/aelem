@@ -1,0 +1,27 @@
+<section class="login-section">
+	<img class="logo" src="assets/img/logos/logo_azul_2.png" alt="Logo Aelem">
+	<div class="login-box animate__animated animate__fadeInDown">
+		<h6 class="title text-center">Iniciar Sesión</h6>
+		<form class="login-form">
+			<div class="form-group" [formGroup]="loginForm" (ngSubmit)="login()">
+				<img class="icon" src="assets/img/plataforma/login/username.png" alt="Username Icon">
+				<input	type="text"
+							placeholder="Nombre de usuario"
+							class="form-control">
+			</div>
+			<div class="form-group">
+				<img class="icon" src="assets/img/plataforma/login/password.png" alt="Password Icon">
+				<input	type="password"
+							placeholder="Contraseña"
+							class="form-control">
+			</div>
+			<div class="submit-button text-center">
+				<button class="btn btn-block btn-primary w-100">Ingresar</button>
+			</div>
+			<div class="new-box text-center">
+				<p>Si no tiene cuenta, haga click en el enlace para crear una nueva</p>
+				<button class="btn btn-info" [routerLink]="['/plataforma/registro']">Crear Nueva Cuenta</button>
+			</div>
+		</form>
+	</div>
+</section>

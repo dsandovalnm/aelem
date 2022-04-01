@@ -1,11 +1,10 @@
 <app-navbar></app-navbar>
-<app-header	[style]="'background-image: url(assets/img/cursos/header.jpg); background-size:cover; background-position: bottom center; background-attachment: fixed; height:70vh;'"
+<app-header	[style]="'background-image: url(assets/img/cursos-seminarios/header.jpg); background-size:cover; background-position: bottom center; background-attachment: fixed; height:70vh;'"
 				[mainTitle]="'Beneficios Exclusivos'"
 				[subTitle]="'Cursos y Seminarios'"
 				[description]="'Clases Semanales y Personalizadas en Vivo con el Dr. Sebastián Palermo'"
 				[descriptionFontSize]="'1.3rem'">
 </app-header>
-
 
 <app-spinner *ngIf="cursos.length <= 0; else showCursos;"></app-spinner>
 	<ng-template #showCursos>
@@ -26,110 +25,72 @@
 			<h4 class="title text-center font-white">Plan Suscripción Premium</h4>
 		</div>
 		<div class="content-precio">
-				<div class="beneficios col-12 col-sm-4">
-					<div class="perk">
-						<i class="fas fa-check fa-2x pr-3 icon"></i>
-						<p>Acceso a todos los cursos y seminarios de plataforma online</p>
+
+			<div class="beneficios col-12 col-sm-4">
+				<div class="perk">
+					<i class="fas fa-check fa-2x mx-3 icon"></i>
+					<p>Acceso a todos los cursos y seminarios de plataforma online</p>
+				</div>
+				<div class="perk">
+					<i class="fas fa-check fa-2x mx-3 icon"></i>
+					<p>Clases semanales en VIVO con Dr Sebastián Palermo (Martes 8pm Argentina)</p>
+				</div>
+				<div class="perk">
+					<i class="fas fa-check fa-2x mx-3 icon"></i>
+					<p>Material escrito exclusivo</p>
+				</div>
+			</div>
+
+			<app-spinner [loadingMessage]="'Cargando Precios...'" *ngIf="location.countrycode == ''; else showPrices"></app-spinner>
+
+			<ng-template #showPrices>
+				<div class="precios col-12 col-sm-8">
+
+					
+					<div *ngFor="let precio of precios" class="precio-box" [ngStyle]="{'display':location.countrycode == 'AR' && precio.tipo == 'Argentina' ? 'inline-block' : 'none'}">
+						<div class="precio">
+							<p class="title"> {{ precio.descripcion_precio }} </p>
+							<h6 class="title"> $ {{ precio.valor }} - {{ precio.moneda }} </h6>
+		
+							<form [formGroup]="addCartForm" (ngSubmit)="addToCart(precio)">
+								<input type="hidden" formControlName="modalidad">
+								<input type="hidden" formControlName="country">
+								<input type="hidden" formControlName="course_price">
+								<input type="hidden" formControlName="currency">
+								<input type="hidden" formControlName="course_code">
+								<input type="hidden" formControlName="course_name">
+								<input type="hidden" formControlName="course_image">
+								<input type="hidden" formControlName="frecuency_sub">
+								<input type="hidden" formControlName="course_quantity">
+		
+								<button type="submit" class="btn btn-info btn-block">Suscribirme Ahora!</button>
+							</form>
+						</div>
 					</div>
-					<div class="perk">
-						<i class="fas fa-check fa-2x pr-3 icon"></i>
-						<p>Clases semanales en VIVO con Dr Sebastián Palermo (Martes 8pm Argentina)</p>
-					</div>
-					<div class="perk">
-						<i class="fas fa-check fa-2x pr-3 icon"></i>
-						<p>Material escrito exclusivo</p>
+
+					
+					<div *ngFor="let precio of precios" class="precio-box" [ngStyle]="{'display':location.countrycode != 'AR' && precio.tipo != 'Argentina' ? 'inline-block' : 'none'}">
+						<div class="precio">
+							<p class="title"> {{ precio.descripcion_precio }} </p>
+							<h6 class="title"> $ {{ precio.valor }} - {{ precio.moneda }} </h6>
+		
+							<form [formGroup]="addCartForm" (ngSubmit)="addToCart(precio)">
+								<input type="hidden" formControlName="modalidad">
+								<input type="hidden" formControlName="country">
+								<input type="hidden" formControlName="course_price">
+								<input type="hidden" formControlName="currency">
+								<input type="hidden" formControlName="course_code">
+								<input type="hidden" formControlName="course_name">
+								<input type="hidden" formControlName="course_image">
+								<input type="hidden" formControlName="frecuency_sub">
+								<input type="hidden" formControlName="course_quantity">
+		
+								<button type="submit" class="btn btn-info btn-block">Suscribirme Ahora!</button>
+							</form>
+						</div>
 					</div>
 				</div>
-
-					<!-- Contenedor de Precios Argentina -->
-						<!-- Mensual Argentina -->
-						<div [ngStyle]="{'display': precio.tipo !== 'argentina' ? 'none' : 'inline-block'}" *ngFor="let precio of preciosMes" class="precios mensual col-12 col-sm-4 text-center">
-							<div *ngIf="precio.tipo === 'argentina' && location !== undefined && location.countrycode === 'AR'">
-								<p class="title">Inversión Mensual</p>
-								<p><i>Débito Automático</i></p>
-								<p class="title"><span style="font-size: 2rem;"> {{ precio.valor }} </span><sup> ARS </sup> / Mes</p>
-								
-								<form action="cart.php" method="post">
-									<input type="hidden" value="online" name="course_modality" id="course_modality">
-									<input type="hidden" value="{{location.countryname}}" name="country" id="country">
-									<input type="hidden" value="{{precio.valor}}" name="course_price" id="course_price">
-									<input type="hidden" value="{{precio.codigo_seminario}}" name="course_code" id="course_code">
-									<input type="hidden" value="{{precio.nombre_seminario}}" name="course_name" id="course_name">
-									<input type="hidden" value="{{precio.imagen}}" name="course_image" id="course_image">
-									<input type="hidden" value="mes" name="frecuency_sub" id="frecuency_sub">
-									<input type="hidden" value="1" name="course_quantity" id="course_quantity">
-
-									<button type="submit" id="submit_form" name="submit_form" value="add_course" class="btn btn-info btn-block">Suscribirme Ahora!</button>
-								</form>
-							</div>
-						</div>
-
-						<!-- Semestral Argentina -->
-						<div [ngStyle]="{'display': precio.tipo !== 'argentina' ? 'none' : 'inline-block'}" *ngFor="let precio of preciosSemestre" class="precios semestral col-12 col-sm-4 text-center">
-							<div *ngIf="precio.tipo === 'argentina' && location !== undefined && location.countrycode === 'AR'">
-								<p class="title">Inversión Semestral</p>
-								<p><i>Pago Manual</i></p>
-								<p class="title"><span style="font-size: 2rem;"> {{ precio.valor }} </span><sup> ARS </sup> / Semestral</p>
-
-								<form action="cart.php" method="post">
-									<input type="hidden" value="online" name="course_modality" id="course_modality">
-									<input type="hidden" value="{{location.countryname}}" name="country" id="country">
-									<input type="hidden" value="{{precio.valor}}" name="course_price" id="course_price">
-									<input type="hidden" value="{{precio.codigo_seminario}}" name="course_code" id="course_code">
-									<input type="hidden" value="{{precio.nombre_seminario}}" name="course_name" id="course_name">
-									<input type="hidden" value="{{precio.imagen}}" name="course_image" id="course_image">
-									<input type="hidden" value="semestral" name="frecuency_sub" id="frecuency_sub">
-									<input type="hidden" value="1" name="course_quantity" id="course_quantity">
-
-									<button type="submit" id="submit_form" name="submit_form" value="add_course" class="btn btn-info btn-block">Suscribirme Ahora!</button>
-								</form>
-							</div>
-						</div>
-
-					<!-- Contador de Precios Exterior -->
-						<!-- Mensual Exterior -->
-						<div [ngStyle]="{'display': precio.tipo === 'argentina' ? 'none' : 'inline-block'}" *ngFor="let precio of preciosMes" class="precios mensual col-12 col-sm-4 text-center">
-							<div *ngIf="precio.tipo !== 'argentina' && location !== undefined && location.countrycode !== 'AR'">
-								<p class="title">Inversión Mensual</p>
-								<p><i>Débito Automático</i></p>
-								<p class="title"><span style="font-size: 2rem;"> {{ precio.valor }} </span><sup> USD </sup> / Mes</p>
-								
-								<form action="cart.php" method="post">
-									<input type="hidden" value="online" name="course_modality" id="course_modality">
-									<input type="hidden" value="{{location.countryname}}" name="country" id="country">
-									<input type="hidden" value="{{precio.valor}}" name="course_price" id="course_price">
-									<input type="hidden" value="{{precio.codigo_seminario}}" name="course_code" id="course_code">
-									<input type="hidden" value="{{precio.nombre_seminario}}" name="course_name" id="course_name">
-									<input type="hidden" value="{{precio.imagen}}" name="course_image" id="course_image">
-									<input type="hidden" value="mes" name="frecuency_sub" id="frecuency_sub">
-									<input type="hidden" value="1" name="course_quantity" id="course_quantity">
-
-									<button type="submit" id="submit_form" name="submit_form" value="add_course" class="btn btn-info btn-block">Suscribirme Ahora!</button>
-								</form>
-							</div>
-						</div>
-
-						<!-- Semestral Exterior -->
-						<div [ngStyle]="{'display': precio.tipo === 'argentina' ? 'none' : 'inline-block'}" *ngFor="let precio of preciosSemestre" class="precios semestral col-12 col-sm-4 text-center">
-							<div *ngIf="precio.tipo !== 'argentina' && location !== undefined && location.countrycode !== 'AR'">
-								<p class="title">Inversión Semestral</p>
-								<p><i>Pago Manual</i></p>
-								<p class="title"><span style="font-size: 2rem;"> {{ precio.valor }} </span><sup> USD </sup> / Semestral</p>
-
-								<form action="cart.php" method="post">
-									<input type="hidden" value="online" name="course_modality" id="course_modality">
-									<input type="hidden" value="{{location.countryname}}" name="country" id="country">
-									<input type="hidden" value="{{precio.valor}}" name="course_price" id="course_price">
-									<input type="hidden" value="{{precio.codigo_seminario}}" name="course_code" id="course_code">
-									<input type="hidden" value="{{precio.nombre_seminario}}" name="course_name" id="course_name">
-									<input type="hidden" value="{{precio.imagen}}" name="course_image" id="course_image">
-									<input type="hidden" value="semestral" name="frecuency_sub" id="frecuency_sub">
-									<input type="hidden" value="1" name="course_quantity" id="course_quantity">
-
-									<button type="submit" id="submit_form" name="submit_form" value="add_course" class="btn btn-info btn-block">Suscribirme Ahora!</button>
-								</form>
-							</div>
-						</div>
+			</ng-template>
 		</div>
 	</div>
 </section>

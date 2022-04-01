@@ -4,12 +4,26 @@
 		<div class="container">
 			<!-- Versión Escritorio -->
 			<div class="no-mobile-flex content-box">
-				<div *ngFor="let curso_seminario of content" [class]="sectionName+'-box col-sm-3'" data-bs-toggle="modal" [attr.data-bs-target]="'#'+sectionName+'Modal_'+curso_seminario.codigo">
-						<img [src]="'assets/img/cursos-seminarios/'+sectionName+'/'+curso_seminario.imagen_curso_seminario" [alt]="curso_seminario.nombre_curso_seminario">
-						<p class="title text-center"> {{ curso_seminario.nombre_curso_seminario }} </p>
-						<div class="text-box">
-							<small class=""> {{ curso_seminario.descripcion_curso_seminario }} </small>
-							<small class="title ">Disertante: {{ curso_seminario.titulo_profesional }} {{ curso_seminario.nombre_profesional }} {{ curso_seminario.apellido_profesional }} </small>
+				<div *ngFor="let curso_seminario of content" [class]="sectionName+'-box col-sm-3'">
+						<img	[src]="'assets/img/cursos-seminarios/'+sectionName+'/'+curso_seminario.imagen_curso_seminario" [alt]="curso_seminario.nombre_curso_seminario"
+								data-bs-toggle="modal" [attr.data-bs-target]="'#'+sectionName+'Modal_'+curso_seminario.codigo">
+
+						<div class="text-box" data-bs-toggle="modal" [attr.data-bs-target]="'#'+sectionName+'Modal_'+curso_seminario.codigo">
+							<p class="title text-center"> {{ curso_seminario.nombre_curso_seminario }} </p>
+							<small class="my-2"> {{ curso_seminario.descripcion_curso_seminario }} </small>
+							<small class="title my-2">Disertante: {{ curso_seminario.titulo_profesional }} {{ curso_seminario.nombre_profesional }} {{ curso_seminario.apellido_profesional }} </small>
+						</div>
+
+						<div *ngFor="let precio of precios">
+							<div *ngIf="location.countryname == 'Argentina'; then showArg else showExt;" class="buy-btn"></div>
+							<ng-template #showArg>
+								<h6 *ngIf="curso_seminario.codigo == precio.codigo_seminario && precio.tipo == 'Argentina'" class="title text-center"> ${{ precio.valor }} ARS </h6>
+								<button *ngIf="curso_seminario.codigo == precio.codigo_seminario && precio.tipo == 'Argentina'" class="btn btn-success btn-block w-100 my-2" (click)="addToCart(precio)">Comprar <i class="fa-solid fa-cart-plus"></i></button>
+							</ng-template>
+							<ng-template #showExt>
+								<h6 *ngIf="curso_seminario.codigo == precio.codigo_seminario && precio.tipo == 'Exterior'" class="title text-center"> ${{ precio.valor }} USD </h6>
+								<button *ngIf="curso_seminario.codigo == precio.codigo_seminario && precio.tipo == 'Exterior'" class="btn btn-success btn-block w-100 my-2" (click)="addToCart(precio)">Comprar <i class="fa-solid fa-cart-plus"></i></button>
+							</ng-template>
 						</div>
 				</div>
 							
@@ -17,10 +31,10 @@
 						<div class="modal-dialog modal-lg modal-dialog-centered" role="document">
 							<div class="modal-content">
 								<button type="button" class="btn close" data-bs-dismiss="modal" aria-label="Close">
-										<i class="fas fa-times fa-lg"></i>
+									<i class="fas fa-times fa-lg"></i>
 								</button>
 								<div class="modal-header background-overlay-light" style="background-image:url(assets/img/cursos-seminarios/{{sectionName}}/{{curso_seminario.imagen_curso_seminario}});background-position:center;background-size:cover;">
-										<h5 class="modal-title text-center white-text" [id]="sectionName+'ModalLongTitle'"> {{ curso_seminario.nombre_curso_seminario }} </h5>
+									<h5 class="modal-title text-center white-text" [id]="sectionName+'ModalLongTitle'"> {{ curso_seminario.nombre_curso_seminario }} </h5>
 								</div>
 								<div class="modal-body">
 										<div class="detail-boxes">
@@ -76,6 +90,7 @@
 									</div>
 									<p class="title"> {{ item.nombre_curso_seminario }} </p>
 									<p>Disertante: {{ item.titulo_profesional }} {{ item.nombre_profesional }} {{ item.apellido_profesional }} </p>
+									<button class="btn btn-success">Agregar al Carrito <i class="fa-solid fa-cart-plus"></i></button>
 								</div>
 							</ng-template>
 

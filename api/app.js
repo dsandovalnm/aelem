@@ -17,6 +17,8 @@ const app = express();
 		res.send('Bienvenido a la API Ayuda en las Emociones');
 	});
 
+	
+
 	app.use('/api/articulos', require('./routes/articles'));
 	app.use('/api/articulosleer', require('./routes/articlesLeer'));
 	app.use('/api/articulospandemia', require('./routes/articlesPandemia'));
@@ -26,7 +28,7 @@ const app = express();
 	app.use('/api/cursosseminarios', require('./routes/cursos_seminarios'));
 	app.use('/api/precios', require('./routes/precios'));
 	app.use('/api/descargas', require('./routes/descargas'));
-	app.use('/api/categorias', require('./routes/categorias'));
+	app.use('/api/categoriasdescargas', require('./routes/categoriasDescargas'));
 	app.use('/api/seminarios_live', require('./routes/seminariosLive'));
 
 /* Port Conf */

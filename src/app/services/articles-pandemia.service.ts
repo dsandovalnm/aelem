@@ -18,5 +18,9 @@ export class ArticlesPandemiaService {
   getLastN(amount: number): Observable<any> {
     return this._http.get(`${environment.API_URL}articulospandemia/last/${amount}`);
   }
+    /* Traer un artiulo por codigo */
+  getByCode(codigo: number): Observable<any> {
+    return this._http.get(`${environment.API_URL}articulospandemia/${codigo}`);
+  }
   
 }

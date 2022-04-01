@@ -6,15 +6,15 @@ import { environment } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root'
 })
-export class CategoriasService {
+export class CategoriasDescargasService {
 
   constructor(  private _http: HttpClient) { }
 
   /* Traer todas las categorias de descargas */
   getAll(): Observable<any> {
-    return this._http.get(`${environment.API_URL}categorias`);
+    return this._http.get(`${environment.API_URL}categoriasdescargas`);
   }
   getByName(categoryName: string): Observable<any> {
-    return this._http.get(`${environment.API_URL}categorias/${categoryName}`);
+    return this._http.get(`${environment.API_URL}categoriasdescargas/${categoryName}`);
   }
 }
